@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Meliponário Abelha Rainha | Preservação e Mel em Candeias, Bahia</title>
+  <meta name="description" content="Conheça o Meliponário Abelha Rainha, propriedade de Gabriel Ulisses Barbosa em Petecaba, Candeias, BA. Produção sustentável de mel e conservação de abelhas nativas sem ferrão.">
+  <meta name="keywords" content="Meliponário, Abelha Rainha, Abelha Sem Ferrão, Petecaba, Candeias, Bahia, Gabriel Ulisses Barbosa, Mel Orgânico, Meliponicultura, Sustentabilidade">
+  <meta name="author" content="Meliponário Abelha Rainha">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Meliponário Abelha Rainha | Preservação e Mel em Candeias, BA">
+  <meta property="og:description" content="Produção artesanal de mel e conservação ambiental de espécies nativas de abelhas sem ferrão no Recôncavo Baiano.">
+  <meta property="og:image" content="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg">
+  
+  <!-- Leaflet Map CSS (HTTPS) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  
+  <!-- Estilos Personalizados -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Ícone Favicon (Placeholder SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐝</text></svg>">
+</head>
+<body>
+
+  <!-- BARRA DE ACESSIBILIDADE GLOBAL (WCAG / LBI) -->
+  <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
+    <div class="container accessibility-bar-inner">
+      <span class="accessibility-info">Acessibilidade do Site</span>
+      <div class="accessibility-controls">
+        <button id="btn-diminuir-fonte" title="Diminuir texto" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-aumentar-fonte" title="Aumentar texto" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-alto-contraste" title="Alternar alto contraste" aria-label="Alternar modo de alto contraste" aria-pressed="false">
+          <svg style="width: 14px; height: 14px; fill: currentColor; margin-right: 6px;" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-15v14c3.31 0 6-2.69 6-6s-2.69-6-6-6z"/>
+          </svg>
+          Alto Contraste
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CABEÇALHO E MENU PRINCIPAL -->
+  <header>
+    <div class="container nav-bar">
+      <a href="#inicio" class="logo-link" aria-label="Meliponário Abelha Rainha - Página Inicial">
+        <!-- Logo Vetorial Premium -->
+        <svg class="logo-svg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="45" fill="#FFFDF9" stroke="#FFB300" stroke-width="4"/>
+          <path d="M35 42 Q50 32 65 42 M35 58 Q50 68 65 58" fill="none" stroke="#2C2520" stroke-width="3" stroke-linecap="round"/>
+          <path d="M40 50 L60 50" fill="none" stroke="#FFB300" stroke-width="6" stroke-linecap="round"/>
+          <!-- Desenho simplificado de abelha -->
+          <ellipse cx="50" cy="50" rx="16" ry="12" fill="#FFB300" stroke="#2C2520" stroke-width="2"/>
+          <ellipse cx="44" cy="42" rx="6" ry="10" fill="#FF6F00" opacity="0.8"/>
+          <ellipse cx="56" cy="42" rx="6" ry="10" fill="#FF6F00" opacity="0.8"/>
+          <line x1="42" y1="50" x2="42" y2="58" stroke="#2C2520" stroke-width="2"/>
+          <line x1="50" y1="50" x2="50" y2="62" stroke="#2C2520" stroke-width="2"/>
+          <line x1="58" y1="50" x2="58" y2="58" stroke="#2C2520" stroke-width="2"/>
+          <circle cx="38" cy="47" r="1.5" fill="#2C2520"/>
+        </svg>
+        <div class="brand-typography nav-brand">
+          <span class="brand-name">Abelha Rainha</span>
+          <span class="brand-author">Por Ulisses Barbosa</span>
+        </div>
+      </a>
+
+      <!-- Navegação Principal -->
+      <nav aria-label="Menu de Navegação Principal">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#inicio">Início</a></li>
+          <li class="nav-item"><a href="#historia">Nossa História</a></li>
+          <li class="nav-item"><a href="#abelhas">Nossas Abelhas</a></li>
+          <li class="nav-item"><a href="#galeria">Galeria</a></li>
+          <li class="nav-item"><a href="#localizacao">Localização</a></li>
+          <li class="nav-item"><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão Menu Mobile (Apenas telas menores) -->
+      <button class="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- SEÇÃO HERO (BOAS-VINDAS) -->
+    <section id="inicio" class="hero-section" aria-label="Banner de Boas-vindas">
+      <!-- Imagem de fundo do meliponário -->
+      <img src="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg" alt="Visão geral do Meliponário Abelha Rainha na mata" class="hero-bg">
+      <div class="hero-content">
+        <div class="hero-tagline">
+          <span>🐝 Meliponicultura Sustentável</span>
+        </div>
+        <div class="brand-typography hero-brand">
+          <h1 class="brand-name">Meliponário <span>Abelha Rainha</span></h1>
+          <span class="brand-author">Por Ulisses Barbosa</span>
+        </div>
+        <p class="hero-text">
+          Preservando a biodiversidade através do cultivo de abelhas nativas sem ferrão na Mata Atlântica de Petecaba, Candeias, Bahia.
+        </p>
+        <div class="hero-actions">
+          <a href="#historia" class="btn btn-primary">Conhecer História</a>
+          <a href="#contato" class="btn btn-secondary">Entrar em Contato</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO HISTÓRIA / QUEM SOMOS -->
+    <section id="historia">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text-content">
+            <span class="section-subtitle">Sobre o Meliponário</span>
+            <h2 class="section-title">Nossa Jornada em <span>Petecaba</span></h2>
+            <p>
+              O <strong>Meliponário Abelha Rainha</strong>, fundado e administrado por <strong>Gabriel Ulisses Barbosa</strong>, nasceu da paixão pela natureza e do compromisso com a sustentabilidade ambiental no Recôncavo Baiano. Localizado na exuberante região de <strong>Petecaba</strong>, na zona rural próxima à cidade de <strong>Candeias, Bahia</strong>, o meliponário atua como um refúgio ecológico e centro produtivo.
+            </p>
+            <p>
+              Nosso foco principal é a criação racional e preservação de <strong>Abelhas Sem Ferrão (ASF)</strong>, fundamentais para a polinização da flora nativa da Mata Atlântica local. Unimos a produção artesanal de mel e subprodutos de altíssima qualidade com atividades de conscientização ecológica sob a liderança do proprietário Gabriel Ulisses.
+            </p>
+            <div class="highlight-box">
+              "Proteger as abelhas nativas é salvaguardar o futuro da nossa flora e garantir o equilíbrio dos ecossistemas locais."
+            </div>
+            <p>
+              Ao longo dos anos, nosso espaço foi estruturado de forma a respeitar rigorosamente o bem-estar das colônias, utilizando caixas racionais que permitem a divisão saudável das colmeias e a colheita higiênica e sustentável de um mel 100% puro e artesanal.
+            </p>
+          </div>
+          
+          <div class="about-media-wrapper">
+            <!-- Vídeo nativo do WhatsApp fornecido no diretório -->
+            <video class="about-video" controls poster="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg" aria-label="Apresentação em vídeo do Meliponário Abelha Rainha">
+              <source src="WhatsApp%20Video%202026-07-12%20at%2015.51.45.mp4" type="video/mp4">
+              Seu navegador não suporta a reprodução de vídeos.
+            </video>
+            <div class="badge-float">
+              <div class="badge-number">100%</div>
+              <div class="badge-label">Natural &amp;<br>Sustentável</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CITAÇÃO DE SENHOR ULISSES -->
+    <section class="quote-banner" aria-label="Citação do Senhor Ulisses">
+      <div class="hex-pattern"></div>
+      <div class="container quote-container">
+        <blockquote class="quote-blockquote">
+          <p class="quote-text">
+            "Criadores de abelhas têm a obrigação de plantar e semear todos os dias!<br>
+            Quanto mais plantar, mais saudável será sua colmeia."
+          </p>
+          <cite class="quote-author">
+            <strong>Sr. Ulisses</strong>
+            <span>Comunidade da Petecaba, Candeias - BA</span>
+          </cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- SEÇÃO ESPÉCIES / PRODUTOS -->
+    <section id="abelhas" class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Educação e Preservação</span>
+          <h2 class="section-title">Nossas Espécies de <span>Abelhas Nativas</span></h2>
+          <p class="section-desc">
+            Cultivamos espécies nativas do Brasil (Meliponíneos), cada uma com suas características biológicas, hábitos de polinização e méis de sabor único sob os cuidados de Gabriel Ulisses Barbosa.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card Uruçu -->
+          <article class="card">
+            <div class="card-header-img">
+              <img src="WhatsApp%20Image%202026-07-12%20at%2015.54.01.jpeg" alt="Uruçu Nordestina no ninho">
+              <span class="card-badge">Nativa</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Uruçu Nordestina</h3>
+              <span class="card-subtitle">Melipona scutellaris</span>
+              <p class="card-text">
+                Uma das abelhas sem ferrão mais emblemáticas do Nordeste brasileiro. Destaca-se pelo seu tamanho robusto e pela produção de um mel levemente ácido, refrescante e altamente valorizado pelas suas propriedades medicinais.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Bioma: Mata Atlântica</span>
+              <button class="card-link species-trigger" data-species="urucu" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Saber mais →</button>
+            </div>
+          </article>
+
+          <!-- Card Mandaçaia -->
+          <article class="card">
+            <div class="card-header-img">
+              <img src="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg" alt="Colmeia racional de Mandaçaia">
+              <span class="card-badge">Preservação</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Mandaçaia</h3>
+              <span class="card-subtitle">Melipona quadrifasciata</span>
+              <p class="card-text">
+                Com listras amarelas marcantes no abdômen, a Mandaçaia constrói ninhos organizados em troncos ocos. Seu mel é denso, doce e aromático, excelente para a gastronomia refinada e fortalecimento do sistema imunológico.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Comportamento: Manso</span>
+              <button class="card-link species-trigger" data-species="mandacaia" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Saber mais →</button>
+            </div>
+          </article>
+
+          <!-- Card Jataí -->
+          <article class="card">
+            <div class="card-header-img">
+              <img src="WhatsApp%20Image%202026-07-12%20at%2015.57.24.jpeg" alt="Entrada característica do ninho de Jataí">
+              <span class="card-badge">Resistente</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Jataí</h3>
+              <span class="card-subtitle">Tetragonisca angustula</span>
+              <p class="card-text">
+                Pequena, ativa e adaptável. Reconhecida pelo seu tubo de entrada feito de cera e própolis. O mel de Jataí é famoso mundialmente, possuindo alta acidez e compostos bioativos excepcionais recomendados para a saúde.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Ação: Polinizadora</span>
+              <button class="card-link species-trigger" data-species="jatai" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Saber mais →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO GALERIA DE FOTOS -->
+    <section id="galeria">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Registro Visual</span>
+          <h2 class="section-title">Nosso Cotidiano em <span>Imagens</span></h2>
+          <p class="section-desc">
+            Registros fotográficos reais do nosso meliponário em Petecaba, exibindo a infraestrutura e o manejo diário das colônias.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Foto 1 -->
+          <div class="gallery-item" role="button" aria-label="Visualizar Imagem da Caixa Racional na mata" tabindex="0">
+            <img src="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg" alt="Estrutura de meliponário suspenso na floresta de Petecaba">
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Meliponário Suspenso</h3>
+              <p class="gallery-desc">Manejo ecológico integrado à vegetação local de Petecaba.</p>
+            </div>
+          </div>
+
+          <!-- Foto 2 -->
+          <div class="gallery-item" role="button" aria-label="Visualizar Imagem do Alvado da Colmeia" tabindex="0">
+            <img src="WhatsApp%20Image%202026-07-12%20at%2015.54.01.jpeg" alt="Entrada de caixa de abelhas sem ferrão">
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Entrada de Colmeia</h3>
+              <p class="gallery-desc">Atividade intensa de pouso e decolagem das campeiras.</p>
+            </div>
+          </div>
+
+          <!-- Foto 3 -->
+          <div class="gallery-item" role="button" aria-label="Visualizar Imagem das Caixas Organizadoras" tabindex="0">
+            <img src="WhatsApp%20Image%202026-07-12%20at%2015.57.24.jpeg" alt="Prateleiras e suportes organizados de meliponicultura">
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Organização das Colônias</h3>
+              <p class="gallery-desc">Suportes individuais protegidos contra predadores naturais.</p>
+            </div>
+          </div>
+
+          <!-- Foto 4 / Vídeo -->
+          <div class="gallery-item gallery-item-video" role="button" aria-label="Visualizar Vídeo do Manejo e Vida no Meliponário" tabindex="0" data-video="WhatsApp%20Video%202026-07-12%20at%2015.51.45.mp4">
+            <img src="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg" alt="Manejo e Vida no Meliponário (Vídeo)">
+            <div class="video-play-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M8 5v14l11-7z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="gallery-overlay">
+              <h3 class="gallery-title">Manejo e Vida no Meliponário</h3>
+              <p class="gallery-desc">Assista ao vídeo mostrando o vôo das abelhas e o manejo ecológico.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO LOCALIZAÇÃO (MAPA E DETALHES DE PETECABA) -->
+    <section id="localizacao" class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Onde Estamos</span>
+          <h2 class="section-title">Localização do <span>Meliponário</span></h2>
+          <p class="section-desc">
+            Situado no Recôncavo Baiano, em uma região propícia com flora nativa abundante e ar puro.
+          </p>
+        </div>
+
+        <div class="location-wrapper">
+          <!-- Elemento onde o mapa Leaflet será renderizado -->
+          <div class="map-container" id="map" role="application" aria-label="Mapa interativo mostrando a localização em Petecaba, Candeias">
+            <div class="map-placeholder">
+              <p>Carregando mapa interativo...</p>
+            </div>
+          </div>
+
+          <div class="location-info">
+            <h3>Petecaba, Candeias - BA</h3>
+            <p style="margin-top: 12px; color: var(--text-muted);">
+              Nossa fazenda fica em uma área rural preservada sob o comando de Gabriel Ulisses Barbosa, garantindo que as abelhas tenham acesso exclusivo a flores silvestres sem pesticidas ou contaminações industriais.
+            </p>
+            
+            <ul class="location-details">
+              <li>
+                <div class="location-icon-wrapper">📍</div>
+                <div>
+                  <strong>Endereço de Referência</strong>
+                  <p>Região de Petecaba, Próximo a Candeias, Bahia, CEP 43800-000</p>
+                </div>
+              </li>
+              <li>
+                <div class="location-icon-wrapper">🌐</div>
+                <div>
+                  <strong>Coordenadas Geográficas</strong>
+                  <p>Latitude: -12.677947<br>Longitude: -38.448682</p>
+                </div>
+              </li>
+              <li>
+                <div class="location-icon-wrapper">🌿</div>
+                <div>
+                  <strong>Bioma Predominante</strong>
+                  <p>Zona de transição e fragmentos de Mata Atlântica com flora melífera variada.</p>
+                </div>
+              </li>
+            </ul>
+
+            <a href="https://maps.google.com/?q=-12.677947,-38.448682" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              Ver Rotas no Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contato">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Fale Conosco</span>
+          <h2 class="section-title">Mande uma <span>Mensagem</span></h2>
+          <p class="section-desc">
+            Tem dúvidas sobre abelhas sem ferrão, quer adquirir produtos ou agendar uma visita educativa? Escreva para nós.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="form-name" class="form-label">Nome Completo *</label>
+                <input type="text" id="form-name" class="form-input" placeholder="Seu nome completo" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="form-email" class="form-label">E-mail para Retorno *</label>
+                <input type="email" id="form-email" class="form-input" placeholder="seuemail@exemplo.com" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="form-message" class="form-label">Sua Mensagem *</label>
+                <textarea id="form-message" class="form-input" placeholder="Como podemos ajudar você?" required aria-required="true"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
+            </form>
+          </div>
+
+          <div class="contact-info-panel">
+            <div class="contact-cta">
+              <h4>💬 Atendimento Direto por WhatsApp</h4>
+              <p>Precisa de um retorno mais rápido sobre caixas racionais, enxames ou disponibilidade de mel? Clique abaixo e fale diretamente com o meliponicultor Gabriel Ulisses.</p>
+              <a href="https://wa.me/5571999999999" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top: 16px;">
+                Falar no WhatsApp
+              </a>
+            </div>
+
+            <div class="contact-meta">
+              <div class="contact-meta-item">
+                <div class="icon">✉️</div>
+                <div class="text">
+                  <h5>E-mail de Contato</h5>
+                  <p>contato@meliponarioabelharainha.com.br</p>
+                </div>
+              </div>
+              <div class="contact-meta-item">
+                <div class="icon">⏰</div>
+                <div class="text">
+                  <h5>Horário de Atendimento</h5>
+                  <p>Segunda a Sexta: 08:00 às 17:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-typography nav-brand" style="margin-bottom: 16px;">
+            <span class="brand-name" style="color: var(--text-light); font-size: 1.4rem;">Abelha Rainha</span>
+            <span class="brand-author" style="color: var(--primary-color); font-size: 0.7rem; margin-top: 4px;">Por Ulisses Barbosa</span>
+          </div>
+          <p style="margin-top: 16px;">
+            Meliponário sustentável focado na preservação de espécies de abelhas nativas brasileiras e na educação ambiental comunitária no Recôncavo Baiano.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#historia">Quem Somos</a></li>
+            <li><a href="#abelhas">Espécies</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Sustentabilidade</h4>
+          <p>Projeto de fomento e conservação da biodiversidade de meliponíneos da Mata Atlântica de Candeias/Bahia.</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-credits">
+          <p>&copy; 2026 Meliponário Abelha Rainha. Todos os direitos reservados.</p>
+          <p>Propriedade de <strong>Gabriel Ulisses Barbosa</strong> | Petecaba, Candeias - BA</p>
+        </div>
+        
+        <!-- Assinatura e Mascote Bolinho de Chuva -->
+        <div class="mascot-signature" role="contentinfo" aria-label="Créditos de desenvolvimento e mascote">
+          <img src="Bolinho%20de%20chuva.jpg" alt="Mascote Bolinho de Chuva" class="mascot-avatar">
+          <div class="mascot-text">
+            <span>Desenvolvido sob o selo <strong>YLuna85 LABs</strong></span>
+            <span>com a supervisão da mascote <strong>Bolinho de Chuva 🐕</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL LIGHTBOX (VISUALIZADOR AMPLIADO COM CARROSSEL) -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualização ampliada de mídia">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Fechar visualização">&times;</button>
+      
+      <!-- Contêiner de Mídia -->
+      <div class="lightbox-media-container">
+        <img id="lightbox-img" src="" alt="" class="lightbox-img">
+        <video id="lightbox-video" src="" controls class="lightbox-video" style="display: none;"></video>
+      </div>
+
+      <!-- Legenda -->
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+
+      <!-- Controles do Carrossel -->
+      <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Mídia anterior">&#10094;</button>
+      <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Próxima mídia">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- MODAL DETALHES DA ESPÉCIE -->
+  <div id="species-modal" class="species-modal" role="dialog" aria-modal="true" aria-label="Detalhes da Espécie">
+    <div class="species-modal-backdrop"></div>
+    <div class="species-modal-content">
+      <button id="species-modal-close" class="species-modal-close" aria-label="Fechar detalhes">&times;</button>
+      <div id="species-details-container">
+        <!-- Conteúdo inserido dinamicamente via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet Map JS (HTTPS) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Comportamentos JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
