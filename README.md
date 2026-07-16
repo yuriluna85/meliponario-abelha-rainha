@@ -47,6 +47,7 @@ Meliponário Abelha Rainha/
 - 🐝 **Abelhas Sem Ferrão (ASF)**: Implementado modal de detalhes para as espécies (Uruçu, Mandaçaia e Jataí) contendo informações biológicas estruturadas e botão de contato personalizado via WhatsApp direto para Gabriel Ulisses.
 - 🔤 **Revisão Ortográfica & Acessibilidade**: Corrigido o termo "active" para "ativa" (card Jataí), capitalizada a grafia de "Mata Atlântica" e garantida a acessibilidade de foco e alto contraste em todos os novos elementos.
 - 📱 **Validação de Grid & Sintaxe**: Auditada a integridade sintática e responsividade das colunas em smartphones, tablets e desktops (evitando sobreposições ou quebras).
+- 📞 **Canais de Contato & WhatsApp**: Removido o e-mail de contato inexistente do painel e atualizados todos os links de WhatsApp (no formulário de atendimento, modais de espécies e no botão flutuante) para o número ativo de Ulisses (`71 99272-4330`) com a mensagem pré-escrita: *"Vim pelo Site, queria mais informações.."*.
 
 ### 📅 16/07/2026 - Tipografia e Assinatura Visual 'Por Ulisses Barbosa'
 - 🔤 **Tipografia / Logo**: Importada a fonte clássica *Playfair Display* e criado o layout tipográfico em destaque para a marca "Meliponário Abelha Rainha".
