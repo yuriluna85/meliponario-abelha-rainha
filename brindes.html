@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Brindes e Identidade - Meliponário Abelha Rainha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Outfit:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-mel: #D4A574;
+            --cor-mel-escura: #B38453;
+            --cor-cafe: #2D2416;
+            --cor-verde-floresta: #6B8E5F;
+            --cor-verde-escura: #22392A;
+            --cor-marfim: #FDFBF7;
+            --cor-texto: #312416;
+            --cor-texto-suave: #6B6158;
+            --transicao-suave: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Modo Alto Contraste */
+        body.high-contrast {
+            --cor-mel: #FFFF00;
+            --cor-mel-escura: #FFFF00;
+            --cor-cafe: #000000;
+            --cor-verde-floresta: #00FF00;
+            --cor-verde-escura: #000000;
+            --cor-marfim: #FFFFFF;
+            --cor-texto: #000000;
+            --cor-texto-suave: #000000;
+            background: #FFFFFF !important;
+            color: #000000 !important;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--cor-marfim);
+            color: var(--cor-texto);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 20%, rgba(212, 165, 116, 0.04) 0%, transparent 90%);
+        }
+
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(253, 251, 247, 0.9);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--cor-cafe);
+        }
+
+        .header-brand img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--cor-mel);
+        }
+
+        .header-brand h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .accessibility-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-acc {
+            background: transparent;
+            border: 1px solid var(--cor-mel);
+            color: var(--cor-cafe);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transicao-suave);
+        }
+
+        .btn-acc:hover {
+            background: var(--cor-mel);
+            color: var(--cor-marfim);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--cor-cafe);
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--cor-texto-suave);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .simulator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .simulator-card {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(45, 36, 22, 0.03);
+            border: 1px solid rgba(212, 165, 116, 0.15);
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transicao-suave);
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .simulator-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(45, 36, 22, 0.07);
+        }
+
+        .simulator-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            margin: 20px 0 10px 0;
+            color: var(--cor-cafe);
+            text-align: center;
+        }
+
+        .simulator-card p {
+            font-size: 0.95rem;
+            color: var(--cor-texto-suave);
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        /* 3D Caneca */
+        .mug-viewport {
+            width: 200px;
+            height: 200px;
+            perspective: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .mug-3d {
+            width: 120px;
+            height: 150px;
+            background: var(--cor-marfim);
+            border-radius: 18px 18px 12px 12px;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: inset -12px -12px 25px rgba(0,0,0,0.06), 5px 12px 22px rgba(45, 36, 22, 0.08);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 165, 116, 0.25);
+        }
+
+        .mug-3d::after {
+            content: '';
+            position: absolute;
+            right: -24px;
+            top: 35px;
+            width: 32px;
+            height: 75px;
+            border: 9px solid var(--cor-marfim);
+            border-left: none;
+            border-radius: 0 35px 35px 0;
+            box-shadow: 4px 4px 8px rgba(45,36,22,0.04);
+        }
+
+        .mug-logo {
+            width: 60px;
+            height: 60px;
+            background-image: url('LOGO.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: translateZ(6px);
+        }
+
+        .mug-viewport:hover .mug-3d {
+            transform: rotateY(25deg) rotateX(5deg);
+        }
+
+        /* Camiseta Personalizável */
+        .tshirt-viewport {
+            width: 220px;
+            height: 220px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .tshirt-shape {
+            width: 190px;
+            height: 190px;
+            background-color: var(--cor-cafe);
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,10 L30,5 L40,15 L50,12 L60,15 L70,5 L80,10 L85,30 L75,35 L75,90 L25,90 L25,35 L15,30 Z" /></svg>') no-repeat center;
+            -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,10 L30,5 L40,15 L50,12 L60,15 L70,5 L80,10 L85,30 L75,35 L75,90 L25,90 L25,35 L15,30 Z" /></svg>') no-repeat center;
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            transition: background-color 0.4s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tshirt-logo {
+            width: 50px;
+            height: 50px;
+            background-image: url('LOGO.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 50px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+            transition: filter 0.3s ease;
+        }
+
+        .color-selector {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .color-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+            transition: var(--transicao-suave);
+        }
+
+        .color-dot.active {
+            box-shadow: 0 0 0 2px var(--cor-mel);
+            transform: scale(1.2);
+        }
+
+        /* 3D Cartão de Visita Flip */
+        .card-viewport {
+            width: 290px;
+            height: 165px;
+            perspective: 1000px;
+            margin: 15px 0;
+        }
+
+        .card-3d {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+            border-radius: 14px;
+            box-shadow: 0 8px 22px rgba(45,36,22,0.12);
+        }
+
+        .card-viewport:hover .card-3d {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 14px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            background: var(--cor-verde-escura);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212,165,116,0.25);
+        }
+
+        .card-front-logo {
+            width: 75px;
+            height: 75px;
+            background-image: url('LOGO.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .card-back {
+            background: var(--cor-marfim);
+            transform: rotateY(180deg);
+            border: 1px solid var(--cor-mel);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-back-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .card-back-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--cor-cafe);
+        }
+
+        .card-back-title {
+            font-size: 0.72rem;
+            color: var(--cor-mel-escura);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .card-back-contact {
+            font-size: 0.65rem;
+            color: var(--cor-texto-suave);
+            line-height: 1.4;
+        }
+
+        .card-back-qr {
+            width: 58px;
+            height: 58px;
+            background-image: url('Manual de Marca/qrcode_site.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* Boné Trucker Personalizável */
+        .cap-viewport {
+            width: 220px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .cap-svg {
+            width: 170px;
+            height: 170px;
+            transition: var(--transicao-suave);
+        }
+
+        .cap-front {
+            fill: var(--cor-verde-escura);
+            transition: fill 0.4s ease;
+        }
+
+        .cap-visor {
+            fill: var(--cor-verde-floresta);
+            transition: fill 0.4s ease;
+        }
+
+        .cap-mesh {
+            fill: var(--cor-mel);
+            transition: fill 0.4s ease;
+        }
+
+        .cap-logo {
+            transform: translate(65px, 50px) scale(0.14);
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+        }
+
+        /* Caneta de Bambu */
+        .pen-viewport {
+            width: 260px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            perspective: 600px;
+        }
+
+        .pen-3d {
+            width: 240px;
+            height: 18px;
+            background: linear-gradient(to bottom, #e3c093 0%, #cfa672 50%, #b28854 100%);
+            border-radius: 9px;
+            position: relative;
+            box-shadow: 0 8px 15px rgba(45,36,22,0.1);
+            transition: var(--transicao-suave);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ponta e Clipe de Metal */
+        .pen-3d::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 1px;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(to bottom, #e0e0e0, #9e9e9e);
+            clip-path: polygon(100% 0, 0 50%, 100% 100%);
+        }
+
+        .pen-3d::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: -6px;
+            width: 35px;
+            height: 6px;
+            background: linear-gradient(to bottom, #f5f5f5, #bdbdbd);
+            border-radius: 3px;
+        }
+
+        .pen-logo {
+            width: 32px;
+            height: 12px;
+            background-image: url('LOGO.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.75;
+            filter: grayscale(100%) brightness(0.3);
+        }
+
+        .pen-viewport:hover .pen-3d {
+            transform: rotateX(20deg) rotateY(-10deg) translateY(-4px);
+            box-shadow: 0 12px 25px rgba(45,36,22,0.18);
+        }
+
+        /* Rodapé / Ações */
+        .action-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .btn-back-portal {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--cor-cafe);
+            color: var(--cor-marfim);
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transicao-suave);
+            box-shadow: 0 4px 12px rgba(45,36,22,0.15);
+        }
+
+        .btn-back-portal:hover {
+            background: var(--cor-mel);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(212, 165, 116, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="header-brand">
+            <img src="LOGO.png" alt="Logo Abelha Rainha">
+            <h1>Meliponário Abelha Rainha</h1>
+        </a>
+        <div class="accessibility-controls">
+            <button class="btn-acc" onclick="changeFontSize(-1)">A-</button>
+            <button class="btn-acc" onclick="changeFontSize(1)">A+</button>
+            <button class="btn-acc" onclick="toggleContrast()">Alto Contraste</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Simulador de Identidade Visual</h2>
+            <p>
+                Explore a aplicação física da nossa marca da abelha sem ferrão coroada oficial. 
+                Os modelos abaixo respondem ao toque e oferecem simulações de cores e rotações 3D.
+            </p>
+        </section>
+
+        <section class="simulator-grid">
+            <!-- Caneca -->
+            <div class="simulator-card">
+                <div class="mug-viewport">
+                    <div class="mug-3d">
+                        <div class="mug-logo"></div>
+                    </div>
+                </div>
+                <h3>Caneca Rústica Cerâmica</h3>
+                <p>Caneca cerâmica marfim com o logotipo gravado em baixo relevo. Passe o mouse para rotacionar em 3D!</p>
+            </div>
+
+            <!-- Camiseta -->
+            <div class="simulator-card">
+                <div class="tshirt-viewport">
+                    <div id="tshirt" class="tshirt-shape">
+                        <div id="tshirt-logo" class="tshirt-logo"></div>
+                    </div>
+                </div>
+                <h3>Camiseta Ecológica</h3>
+                <p>Camiseta de algodão orgânico com silk-screen ecológico. Mude a cor do tecido abaixo:</p>
+                <div class="color-selector">
+                    <div class="color-dot active" style="background: #2D2416;" onclick="changeTshirtColor('#2D2416', 'white', this)"></div>
+                    <div class="color-dot" style="background: #6B8E5F;" onclick="changeTshirtColor('#6B8E5F', 'normal', this)"></div>
+                    <div class="color-dot" style="background: #FDFBF7;" onclick="changeTshirtColor('#FDFBF7', 'normal', this)"></div>
+                </div>
+            </div>
+
+            <!-- Cartão de Visitas -->
+            <div class="simulator-card">
+                <div class="card-viewport">
+                    <div class="card-3d">
+                        <!-- Frente -->
+                        <div class="card-face card-front">
+                            <div class="card-front-logo"></div>
+                        </div>
+                        <!-- Verso -->
+                        <div class="card-face card-back">
+                            <div class="card-back-info">
+                                <span class="card-back-name">Ulisses Barbosa</span>
+                                <span class="card-back-title">Meliponicultor & Proprietário</span>
+                                <span class="card-back-contact">📍 Petecaba, Candeias - BA</span>
+                                <span class="card-back-contact">📞 (71) 99272-4330</span>
+                                <span class="card-back-contact">🌐 meliponario-abelha-rainha.com.br</span>
+                            </div>
+                            <div class="card-back-qr"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Cartão de Visitas Premium</h3>
+                <p>Cartão de visitas com gravação dourada. Passe o mouse para virar e ver os dados de Ulisses e o QR Code!</p>
+            </div>
+
+            <!-- Boné Trucker -->
+            <div class="simulator-card">
+                <div class="cap-viewport">
+                    <svg class="cap-svg" viewBox="0 0 200 200">
+                        <!-- Redinha do Boné -->
+                        <path class="cap-mesh" d="M30,100 C30,40, 170,40, 170,100 Z" />
+                        <!-- Testa do Boné -->
+                        <path class="cap-front" d="M45,100 C45,50, 155,50, 155,100 Z" />
+                        <!-- Aba do Boné -->
+                        <path class="cap-visor" d="M25,100 C25,120, 175,120, 175,100 Z" />
+                        <!-- Botão superior -->
+                        <circle cx="100" cy="45" r="6" fill="#D4A574" />
+                        <!-- Logo no Boné -->
+                        <g class="cap-logo">
+                            <image href="LOGO.png" width="500" height="500" />
+                        </g>
+                    </svg>
+                </div>
+                <h3>Boné Trucker Oficial</h3>
+                <p>Boné com tela respiradora dourada e bordado em alta definição. Selecione a cor da testa:</p>
+                <div class="color-selector">
+                    <div class="color-dot active" style="background: #22392A;" onclick="changeCapColor('#22392A', '#6B8E5F', this)"></div>
+                    <div class="color-dot" style="background: #2D2416;" onclick="changeCapColor('#2D2416', '#D4A574', this)"></div>
+                </div>
+            </div>
+
+            <!-- Caneta de Bambu -->
+            <div class="simulator-card">
+                <div class="pen-viewport">
+                    <div class="pen-3d">
+                        <div class="pen-logo"></div>
+                    </div>
+                </div>
+                <h3>Caneta de Bambu Ecológica</h3>
+                <p>Caneta com corpo cilíndrico de bambu natural e gravação a laser escura. Interaja com o mouse para ver os detalhes!</p>
+            </div>
+        </section>
+
+        <div class="action-container">
+            <a href="index.html" class="btn-back-portal">
+                ← Voltar ao Portal Principal
+            </a>
+        </div>
+    </main>
+
+    <script>
+        let currentFontSize = 100;
+        
+        function changeFontSize(direction) {
+            currentFontSize += direction * 10;
+            if (currentFontSize < 85) currentFontSize = 85;
+            if (currentFontSize > 135) currentFontSize = 135;
+            document.body.style.fontSize = currentFontSize + '%';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+
+        function changeTshirtColor(color, mode, element) {
+            document.getElementById('tshirt').style.backgroundColor = color;
+            const logo = document.getElementById('tshirt-logo');
+            if (mode === 'white') {
+                logo.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))';
+            } else {
+                logo.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))';
+            }
+            const dots = element.parentElement.querySelectorAll('.color-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function changeCapColor(frontColor, visorColor, element) {
+            document.querySelector('.cap-front').style.fill = frontColor;
+            document.querySelector('.cap-visor').style.fill = visorColor;
+            const dots = element.parentElement.querySelectorAll('.color-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
