@@ -245,6 +245,10 @@ img, video {
   display: block;
 }
 
+p {
+  text-align: justify;
+}
+
 .container {
   width: 90%;
   max-width: 1200px;
@@ -698,6 +702,7 @@ body.high-contrast .brand-author::after {
   font-weight: 400;
   color: #EFEBE9;
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  text-align: left;
 }
 
 .hero-actions {
@@ -1354,6 +1359,7 @@ footer {
 .footer-col p {
   color: #D6D2C4;
   margin-bottom: 16px;
+  text-align: left;
 }
 
 .footer-col ul {
@@ -2078,6 +2084,7 @@ body.high-contrast .species-modal-text h4 {
   margin-bottom: 24px;
   color: var(--primary-soft);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
 }
 
 .quote-author {
