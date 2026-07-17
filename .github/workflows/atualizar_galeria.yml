@@ -42,5 +42,6 @@ jobs:
           echo "Nenhuma alteração no galeria.json detectada."
         else
           git commit -m "chore: atualiza galeria.json com mídias do Google Drive [skip ci]"
-          git push
+          git pull --rebase origin main
+          git push origin main
         fi
