@@ -3,11 +3,21 @@
  * Localização: Petecaba, Candeias, BA (-12.677947, -38.448682)
  */
 
+// Configuração para vinculação da galeria com o Google Drive
+const CONFIG_GALERIA = {
+  // Origem das mídias da galeria:
+  // - 'local': Lê os itens diretamente do HTML (convertendo links do Drive se fornecidos lá)
+  // - 'json': Lê a partir de um arquivo JSON local configurado
+  // - 'api': Lê a partir de uma API externa (como Web App do Google Apps Script)
+  origem: 'json', 
+  url: 'galeria.json' // Caminho do arquivo JSON ou URL da API
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   inicializarMenuMobile();
   inicializarAcessibilidade();
   inicializarMapa();
-  inicializarGaleriaLightbox();
+  carregarGaleria(); // Inicializa e carrega a galeria de fotos/vídeos
   inicializarFormularioContato();
   inicializarModalEspecies();
 });
@@ -150,13 +160,213 @@ function inicializarMapa() {
 }
 
 /**
- * 🖼️ 4. GALERIA LIGHTBOX (VISUALIZADOR DE FOTOS)
+ * 🔍 EXTRAÇÃO E CONVERSÃO DE LINKS DO GOOGLE DRIVE
+ */
+function obterIdGoogleDrive(url) {
+  if (!url) return null;
+  // Regex para capturar IDs padrão do Google Drive (fotos, vídeos, compartilhamentos)
+  const regex = /(?:https?:\/\/)?(?:drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)|lh3\.googleusercontent\.com\/d\/)([a-zA-Z0-9_-]{25,})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
+
+function formatarLinkGoogleDrive(url, tipo) {
+  const id = obterIdGoogleDrive(url);
+  if (!id) return url;
+
+  if (tipo === 'video') {
+    // Retorna o link de preview adequado para ser embutido em iframe
+    return `https://drive.google.com/file/d/${id}/preview`;
+  } else {
+    // Retorna link direto para imagem no Google Drive (ideal para tags <img>)
+    return `https://lh3.googleusercontent.com/d/${id}`;
+  }
+}
+
+/**
+ * 📸 CARREGAMENTO, FILTRAGEM E CONVERSÃO DINÂMICA DA GALERIA
+ */
+function carregarGaleria() {
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid) return;
+
+  if (CONFIG_GALERIA.origem === 'local') {
+    // Processa os itens estáticos que estão no HTML convertendo links do Drive
+    const items = galleryGrid.querySelectorAll('.gallery-item');
+    const categorias = new Set();
+
+    items.forEach(item => {
+      const img = item.querySelector('img');
+      const videoSrc = item.getAttribute('data-video');
+      
+      // Define a categoria do item (lê data-categoria ou assume padrão)
+      let categoria = item.getAttribute('data-categoria');
+      if (!categoria) {
+        categoria = videoSrc ? 'Vídeos' : 'Fotos';
+        item.setAttribute('data-categoria', categoria);
+      }
+      categorias.add(categoria);
+
+      if (img && img.src && (img.src.includes('drive.google.com') || img.src.includes('googleusercontent.com'))) {
+        img.src = formatarLinkGoogleDrive(img.src, 'imagem');
+      }
+
+      if (videoSrc && (videoSrc.includes('drive.google.com') || videoSrc.includes('googleusercontent.com'))) {
+        item.setAttribute('data-video', formatarLinkGoogleDrive(videoSrc, 'video'));
+      }
+    });
+
+    inicializarFiltros(Array.from(categorias));
+    inicializarGaleriaLightbox();
+  } else if (CONFIG_GALERIA.origem === 'json' || CONFIG_GALERIA.origem === 'api') {
+    // Busca dados dinâmicos da API ou do JSON local
+    fetch(CONFIG_GALERIA.url)
+      .then(response => {
+        if (!response.ok) throw new Error('Falha ao obter dados da galeria');
+        return response.json();
+      })
+      .then(data => {
+        renderizarGaleriaDinamica(data);
+      })
+      .catch(error => {
+        console.error('Erro ao carregar galeria dinâmica:', error);
+        // Fallback: se der erro, lê as mídias locais do HTML
+        const items = galleryGrid.querySelectorAll('.gallery-item');
+        const categorias = new Set();
+        items.forEach(item => {
+          let cat = item.getAttribute('data-categoria') || (item.getAttribute('data-video') ? 'Vídeos' : 'Fotos');
+          item.setAttribute('data-categoria', cat);
+          categorias.add(cat);
+        });
+        inicializarFiltros(Array.from(categorias));
+        inicializarGaleriaLightbox();
+      });
+  }
+}
+
+function renderizarGaleriaDinamica(itens) {
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid || !Array.isArray(itens)) return;
+
+  // Limpa galeria padrão local
+  galleryGrid.innerHTML = '';
+  const categorias = new Set();
+
+  itens.forEach(item => {
+    const isVideo = item.tipo === 'video' || !!item.videoUrl;
+    const mediaUrl = isVideo ? (item.videoUrl || item.url) : item.url;
+    const capImgUrl = item.capaUrl || item.url;
+    
+    // Define a categoria (subpasta do Drive, ex: "Fotos", "Vídeos", "Região da Petecaba")
+    const categoria = item.categoria || (isVideo ? 'Vídeos' : 'Fotos');
+    categorias.add(categoria);
+
+    // Formata links do Google Drive
+    const finalImgUrl = formatarLinkGoogleDrive(capImgUrl, 'imagem');
+    const finalVideoUrl = isVideo ? formatarLinkGoogleDrive(mediaUrl, 'video') : null;
+
+    const galleryItem = document.createElement('div');
+    galleryItem.className = isVideo ? 'gallery-item gallery-item-video' : 'gallery-item';
+    galleryItem.setAttribute('role', 'button');
+    galleryItem.setAttribute('tabindex', '0');
+    galleryItem.setAttribute('data-categoria', categoria);
+    galleryItem.setAttribute('aria-label', `Visualizar ${isVideo ? 'Vídeo' : 'Imagem'} - ${item.titulo || ''}`);
+    
+    if (isVideo && finalVideoUrl) {
+      galleryItem.setAttribute('data-video', finalVideoUrl);
+    }
+
+    let innerHTML = `<img src="${finalImgUrl}" alt="${item.alt || item.titulo || ''}">`;
+
+    if (isVideo) {
+      innerHTML += `
+        <div class="video-play-indicator" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M8 5v14l11-7z" fill="currentColor"/>
+          </svg>
+        </div>
+      `;
+    }
+
+    innerHTML += `
+      <div class="gallery-overlay">
+        <h3 class="gallery-title">${item.titulo || ''}</h3>
+        <p class="gallery-desc">${item.descricao || ''}</p>
+      </div>
+    `;
+
+    galleryItem.innerHTML = innerHTML;
+    galleryGrid.appendChild(galleryItem);
+  });
+
+  // Inicializa botões de filtro e lightbox
+  inicializarFiltros(Array.from(categorias));
+  inicializarGaleriaLightbox();
+}
+
+/**
+ * 🏷️ INICIALIZAÇÃO DOS FILTROS DA GALERIA
+ */
+function inicializarFiltros(categorias) {
+  const filterContainer = document.querySelector('.gallery-filters');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (!filterContainer || !galleryItems.length) return;
+
+  // Limpa botões, mantendo apenas o botão "Todas"
+  filterContainer.innerHTML = '<button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Todas</button>';
+
+  // Cria dinamicamente botões para cada categoria encontrada
+  categorias.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.setAttribute('data-filter', cat);
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', 'false');
+    btn.textContent = cat;
+    filterContainer.appendChild(btn);
+  });
+
+  const filterButtons = filterContainer.querySelectorAll('.filter-btn');
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove classe active e aria-selected dos demais
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+
+      // Adiciona active no botão clicado
+      button.classList.add('active');
+      button.setAttribute('aria-selected', 'true');
+
+      const filterValue = button.getAttribute('data-filter');
+
+      // Filtra os itens da galeria aplicando classe hidden
+      galleryItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-categoria');
+        if (filterValue === 'all' || itemCategory === filterValue) {
+          item.classList.remove('hidden');
+          // Reinicia animação para efeito de surgimento (fade-in)
+          item.style.animation = 'none';
+          item.offsetHeight; // Truque para forçar reflow do browser
+          item.style.animation = 'galleryFadeIn 0.5s ease forwards';
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+}
+
+/**
+ * 🖼️ 4. GALERIA LIGHTBOX (VISUALIZADOR DE FOTOS COM SUPORTE A FILTROS)
  */
 function inicializarGaleriaLightbox() {
   const galleryItems = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxIframe = document.getElementById('lightbox-iframe');
   const lightboxCaption = document.getElementById('lightbox-caption');
   const lightboxClose = document.getElementById('lightbox-close');
   const btnPrev = document.getElementById('lightbox-prev');
@@ -168,11 +378,16 @@ function inicializarGaleriaLightbox() {
   const itemsArray = Array.from(galleryItems);
 
   const exibirMidia = (index) => {
-    if (index < 0) index = itemsArray.length - 1;
-    if (index >= itemsArray.length) index = 0;
+    // Filtra itens ativos (não ocultados pelo filtro de categorias) para paginação correta
+    const itensVisiveis = itemsArray.filter(item => !item.classList.contains('hidden'));
+    
+    if (itensVisiveis.length === 0) return;
+
+    if (index < 0) index = itensVisiveis.length - 1;
+    if (index >= itensVisiveis.length) index = 0;
     currentMediaIndex = index;
 
-    const item = itemsArray[currentMediaIndex];
+    const item = itensVisiveis[currentMediaIndex];
     const img = item.querySelector('img');
     const videoSrc = item.getAttribute('data-video');
     const title = item.querySelector('.gallery-title');
@@ -188,14 +403,26 @@ function inicializarGaleriaLightbox() {
       lightboxImg.style.display = 'none';
       lightboxImg.src = '';
     }
+    if (lightboxIframe) {
+      lightboxIframe.src = '';
+      lightboxIframe.style.display = 'none';
+    }
 
     if (videoSrc) {
-      if (lightboxVideo) {
-        lightboxVideo.src = decodeURIComponent(videoSrc);
-        lightboxVideo.style.display = 'block';
-        lightboxVideo.load();
-        // Tenta reproduzir automaticamente (silencioso se necessário)
-        lightboxVideo.play().catch(err => console.log('Autoplay prevent:', err));
+      const isIframeVideo = videoSrc.includes('drive.google.com') || videoSrc.includes('googleusercontent.com') || videoSrc.includes('/preview');
+      if (isIframeVideo) {
+        if (lightboxIframe) {
+          lightboxIframe.src = videoSrc;
+          lightboxIframe.style.display = 'block';
+        }
+      } else {
+        if (lightboxVideo) {
+          lightboxVideo.src = decodeURIComponent(videoSrc);
+          lightboxVideo.style.display = 'block';
+          lightboxVideo.load();
+          // Tenta reproduzir automaticamente (silencioso se necessário)
+          lightboxVideo.play().catch(err => console.log('Autoplay prevent:', err));
+        }
       }
     } else if (img) {
       if (lightboxImg) {
@@ -217,11 +444,25 @@ function inicializarGaleriaLightbox() {
   };
 
   // Abre Lightbox
-  itemsArray.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      exibirMidia(index);
-      lightboxClose.focus();
+  itemsArray.forEach((item) => {
+    const abrirItem = () => {
+      // Descobre o índice correto na lista de itens visíveis
+      const itensVisiveis = itemsArray.filter(i => !i.classList.contains('hidden'));
+      const indexNoFiltro = itensVisiveis.indexOf(item);
+      if (indexNoFiltro !== -1) {
+        lightbox.style.display = 'flex';
+        exibirMidia(indexNoFiltro);
+        lightboxClose.focus();
+      }
+    };
+
+    item.addEventListener('click', abrirItem);
+
+    // Suporte para teclado (Enter) abrir a galeria
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        abrirItem();
+      }
     });
   });
 
@@ -231,6 +472,9 @@ function inicializarGaleriaLightbox() {
     if (lightboxVideo) {
       lightboxVideo.pause();
       lightboxVideo.src = '';
+    }
+    if (lightboxIframe) {
+      lightboxIframe.src = '';
     }
   };
 

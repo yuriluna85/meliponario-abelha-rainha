@@ -967,9 +967,63 @@ section {
   color: var(--accent-color);
 }
 
-/* ==========================================================================
-   GALERIA DE FOTOS DO WHATSAPP
-   ========================================================================== */
+/* Filtros da Galeria */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background-color: #FFFDF9;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 8px 22px;
+  border-radius: 50px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 40px;
+}
+
+.filter-btn:hover,
+.filter-btn:focus {
+  border-color: var(--primary-color);
+  color: var(--secondary-color);
+  outline: none;
+}
+
+.filter-btn.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+body.high-contrast .filter-btn {
+  background-color: #111111 !important;
+  color: #FFD700 !important;
+  border: 2px solid #FFD700 !important;
+}
+
+body.high-contrast .filter-btn.active {
+  background-color: #FFD700 !important;
+  color: #000000 !important;
+}
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .gallery-grid {
   display: grid;
@@ -985,6 +1039,12 @@ section {
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   background-color: var(--secondary-color);
+  animation: galleryFadeIn 0.5s ease forwards;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item.hidden {
+  display: none !important;
 }
 
 .gallery-item img {
@@ -1623,6 +1683,17 @@ body.high-contrast .whatsapp-float {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid var(--border-color);
   outline: none;
+}
+
+.lightbox-iframe {
+  width: 80vw;
+  height: 60vh;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background-color: #000;
 }
 
 .lightbox-nav {

@@ -40,6 +40,15 @@ Meliponário Abelha Rainha/
 
 ## 📜 Log de Atualizações (Changelog)
 
+### 📅 17/07/2026 - Vinculação com Google Drive na Galeria de Mídias, Filtro de Categorias, Script Python e GitHub Actions
+- 💾 **Integração com Google Drive**: Implementada a extração e conversão automática de IDs de mídias a partir de links de compartilhamento público de leitura do Google Drive.
+- 🏷️ **Filtro de Categorias por Subpasta**: Adicionado suporte para exibir botões de filtros na galeria dinamicamente com base nas subpastas da pasta principal do Drive (ex: "Fotos", "Vídeos", "Região da Petecaba"), com efeito fade-in animado premium na reordenação dos itens.
+- 🖼️ **Iframe no Lightbox**: Adicionado suporte ao elemento `<iframe>` no modal lightbox do site para permitir a reprodução direta e fluida de vídeos compartilhados via Google Drive.
+- 🐍 **Automação de Mídias (Python)**: Criado o script [atualizar_galeria.py](file:///G:/Meu%20Drive/APP/2.%20Projetos%20e%20Aplica%C3%A7%C3%B5es/2.2%20Aplica%C3%A7%C3%B5es%20e%20C%C3%B3digos%20(GitHub)/Melipon%C3%A1rio%20Abelha%20Rainha/atualizar_galeria.py) que faz o crawling anônimo da pasta do Drive do usuário, detecta subpastas como categorias e atualiza automaticamente o arquivo [galeria.json](file:///G:/Meu%20Drive/APP/2.%20Projetos%20e%20Aplica%C3%A7%C3%B5es/2.2%20Aplica%C3%A7%C3%B5es%20e%20C%C3%B3digos%20(GitHub)/Melipon%C3%A1rio%20Abelha%20Rainha/galeria.json) com as imagens e vídeos reais.
+- 🐙 **Workflow GitHub Actions**: Criado o workflow [.github/workflows/atualizar_galeria.yml](file:///G:/Meu%20Drive/APP/2.%20Projetos%20e%20Aplica%C3%A7%C3%B5es/2.2%20Aplica%C3%A7%C3%B5es%20e%20C%C3%B3digos%20(GitHub)/Melipon%C3%A1rio%20Abelha%20Rainha/.github/workflows/atualizar_galeria.yml) para rodar o script Python periodicamente de forma gratuita na nuvem e atualizar o site sem intervenção manual.
+- ⚙️ **Configuração de Origem Dinâmica**: Modificado o [script.js](file:///G:/Meu%20Drive/APP/2.%20Projetos%20e%20Aplica%C3%A7%C3%B5es/2.2%20Aplica%C3%A7%C3%B5es%20e%20C%C3%B3digos%20(GitHub)/Melipon%C3%A1rio%20Abelha%20Rainha/script.js) para carregar a galeria a partir do `galeria.json` local dinâmico gerado.
+- 📝 **Guia de Integração**: Atualizado o documento explicativo [COMO_CONFIGURAR_GOOGLE_DRIVE.md](file:///G:/Meu%20Drive/APP/2.%20Projetos%20e%20Aplica%C3%A7%C3%B5es/2.2%20Aplica%C3%A7%C3%B5es%20e%20C%C3%B3digos%20(GitHub)/Melipon%C3%A1rio%20Abelha%20Rainha/COMO_CONFIGURAR_GOOGLE_DRIVE.md) com as novas instruções de categorização por subpastas e o código do Apps Script revisado.
+
 ### 📅 16/07/2026 - Carrossel de Mídias, Detalhes das Espécies, Citação do Sr. Ulisses e Configuração de Domínio
 - 🌐 **Domínio Personalizado (Registro.br & GitHub Pages)**: Criado o arquivo `CNAME` na raiz para apontar o domínio `meliponario-abelha-rainha.com.br` e revisada toda a estrutura de caminhos relativos de mídias para compatibilidade imediata.
 - ✍️ **Citação Senhor Ulisses**: Criado um banner decorativo de citação (`.quote-banner`) com gradiente e trama de colmeia no fluxo da página, contendo a citação tradicional do Sr. Ulisses sobre o dever ecológico do plantio.
