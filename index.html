@@ -48,20 +48,7 @@
   <header>
     <div class="container nav-bar">
       <a href="#inicio" class="logo-link" aria-label="Meliponário Abelha Rainha - Página Inicial">
-        <!-- Logo Vetorial Premium -->
-        <svg class="logo-svg" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="45" fill="#FFFDF9" stroke="#FFB300" stroke-width="4"/>
-          <path d="M35 42 Q50 32 65 42 M35 58 Q50 68 65 58" fill="none" stroke="#2C2520" stroke-width="3" stroke-linecap="round"/>
-          <path d="M40 50 L60 50" fill="none" stroke="#FFB300" stroke-width="6" stroke-linecap="round"/>
-          <!-- Desenho simplificado de abelha -->
-          <ellipse cx="50" cy="50" rx="16" ry="12" fill="#FFB300" stroke="#2C2520" stroke-width="2"/>
-          <ellipse cx="44" cy="42" rx="6" ry="10" fill="#FF6F00" opacity="0.8"/>
-          <ellipse cx="56" cy="42" rx="6" ry="10" fill="#FF6F00" opacity="0.8"/>
-          <line x1="42" y1="50" x2="42" y2="58" stroke="#2C2520" stroke-width="2"/>
-          <line x1="50" y1="50" x2="50" y2="62" stroke="#2C2520" stroke-width="2"/>
-          <line x1="58" y1="50" x2="58" y2="58" stroke="#2C2520" stroke-width="2"/>
-          <circle cx="38" cy="47" r="1.5" fill="#2C2520"/>
-        </svg>
+        <img src="logo.webp" class="logo-img" alt="Logo Meliponário Abelha Rainha">
         <div class="brand-typography nav-brand">
           <span class="brand-name">Meliponário Abelha Rainha</span>
           <span class="brand-author">Por Ulisses Barbosa</span>
@@ -358,48 +345,49 @@
     <section id="contato">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">Fale Conosco</span>
-          <h2 class="section-title">Mande uma <span>Mensagem</span></h2>
+          <span class="section-subtitle">Atendimento</span>
+          <h2 class="section-title">Fale Conosco pelo <span>WhatsApp</span></h2>
           <p class="section-desc">
-            Tem dúvidas sobre abelhas sem ferrão, quer adquirir produtos ou agendar uma visita educativa? Escreva para nós.
+            Tem dúvidas sobre o manejo de abelhas nativas sem ferrão, quer adquirir produtos artesanais ou agendar uma visita educativa? O atendimento via WhatsApp é o nosso canal principal e mais rápido.
           </p>
         </div>
 
-        <div class="contact-grid">
-          <div class="contact-card">
-            <form id="contact-form" novalidate>
-              <div class="form-group">
-                <label for="form-name" class="form-label">Nome Completo *</label>
-                <input type="text" id="form-name" class="form-input" placeholder="Seu nome completo" required aria-required="true">
-              </div>
-              <div class="form-group">
-                <label for="form-email" class="form-label">E-mail para Retorno *</label>
-                <input type="email" id="form-email" class="form-input" placeholder="seuemail@exemplo.com" required aria-required="true">
-              </div>
-              <div class="form-group">
-                <label for="form-message" class="form-label">Sua Mensagem *</label>
-                <textarea id="form-message" class="form-input" placeholder="Como podemos ajudar você?" required aria-required="true"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
-            </form>
+        <div class="whatsapp-contact-container">
+          <div class="whatsapp-contact-card">
+            <div class="whatsapp-card-badge">🟢 Online para Mensagens</div>
+            <h3 class="whatsapp-card-title">Gabriel Ulisses Barbosa</h3>
+            <p class="whatsapp-card-subtitle">Meliponicultor & Proprietário</p>
+            <p class="whatsapp-card-desc">
+              Entre em contato direto para vendas de enxames, mel de abelhas nativas da Mata Atlântica (Uruçu, Mandaçaia e Jataí), caixas racionais sob medida e assessoria de manejo ecológico.
+            </p>
+            <a href="https://wa.me/5571992724330?text=Vim%20pelo%20Site,%20queria%20mais%20informa%C3%A7%C3%B5es.." target="_blank" rel="noopener noreferrer" class="btn btn-primary whatsapp-btn-large" aria-label="Falar com Gabriel Ulisses no WhatsApp">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.573 1.453 5.361 1.454 5.378 0 9.754-4.373 9.757-9.754.002-2.607-1.012-5.059-2.859-6.908C17.06 2.1 14.604.992 12.002.992c-5.385 0-9.761 4.372-9.765 9.752-.001 1.905.5 3.755 1.455 5.368l-.953 3.486 3.568-.936zm10.743-7.07c-.29-.145-1.716-.848-1.982-.944-.266-.096-.46-.145-.652.145-.19.29-.74.944-.906 1.135-.167.19-.333.214-.623.069-.29-.145-1.224-.451-2.332-1.441-.862-.77-1.444-1.72-1.614-2.01-.17-.29-.018-.447.127-.592.13-.13.29-.338.435-.508.145-.17.193-.29.29-.483.097-.19.047-.36-.023-.506-.07-.145-.652-1.57-.894-2.15-.236-.57-.475-.49-.652-.499-.169-.008-.363-.01-.557-.01-.19 0-.502.072-.765.352-.263.28-1.006.985-1.006 2.402 0 1.417 1.031 2.784 1.176 2.977.145.19 2.029 3.1 4.916 4.35.687.297 1.222.474 1.64.607.69.22 1.319.19 1.815.116.552-.083 1.716-.7 1.958-1.378.243-.677.243-1.258.17-1.378-.072-.12-.266-.19-.556-.336z"/>
+              </svg>
+              Iniciar Conversa no WhatsApp
+            </a>
           </div>
 
-          <div class="contact-info-panel">
-            <div class="contact-cta">
-              <h4>💬 Atendimento Direto por WhatsApp</h4>
-              <p>Precisa de um retorno mais rápido sobre caixas racionais, enxames ou disponibilidade de mel? Clique abaixo e fale diretamente com o meliponicultor Gabriel Ulisses.</p>
-              <a href="https://wa.me/5571992724330?text=Vim%20pelo%20Site,%20queria%20mais%20informa%C3%A7%C3%B5es.." target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top: 16px;">
-                Falar no WhatsApp
-              </a>
+          <div class="whatsapp-contact-details">
+            <div class="contact-detail-item">
+              <span class="detail-icon" aria-hidden="true">⏰</span>
+              <div class="detail-text">
+                <strong>Horário de Atendimento</strong>
+                <p>Segunda a Sexta: 08:00 às 17:00</p>
+              </div>
             </div>
-
-            <div class="contact-meta">
-              <div class="contact-meta-item">
-                <div class="icon">⏰</div>
-                <div class="text">
-                  <h5>Horário de Atendimento</h5>
-                  <p>Segunda a Sexta: 08:00 às 17:00</p>
-                </div>
+            <div class="contact-detail-item">
+              <span class="detail-icon" aria-hidden="true">📍</span>
+              <div class="detail-text">
+                <strong>Localização Física</strong>
+                <p>Mata Atlântica de Petecaba, Candeias - Bahia</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <span class="detail-icon" aria-hidden="true">🐝</span>
+              <div class="detail-text">
+                <strong>Meliponicultura Responsável</strong>
+                <p>Preservação ambiental e produção artesanal</p>
               </div>
             </div>
           </div>

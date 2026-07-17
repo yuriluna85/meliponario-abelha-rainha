@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarAcessibilidade();
   inicializarMapa();
   carregarGaleria(); // Inicializa e carrega a galeria de fotos/vídeos
-  inicializarFormularioContato();
   inicializarModalEspecies();
 });
 
@@ -540,41 +539,7 @@ function inicializarGaleriaLightbox() {
   });
 }
 
-/**
- * ✉️ 5. TRATAMENTO DO FORMULÁRIO DE CONTATO
- */
-function inicializarFormularioContato() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Obtenção dos dados do formulário
-    const nome = document.getElementById('form-name').value.trim();
-    const email = document.getElementById('form-email').value.trim();
-    const mensagem = document.getElementById('form-message').value.trim();
-
-    if (!nome || !email || !mensagem) {
-      alert('Por favor, preencha todos os campos obrigatórios.');
-      return;
-    }
-
-    // Simulando o envio de dados com feedback visual acessível
-    const btnSubmit = form.querySelector('button[type="submit"]');
-    const originalText = btnSubmit.innerHTML;
-    btnSubmit.disabled = true;
-    btnSubmit.innerHTML = 'Enviando...';
-
-    setTimeout(() => {
-      // Feedback de Sucesso
-      alert(`Obrigado pelo contato, ${nome}! Sua mensagem foi registrada com sucesso.`);
-      form.reset();
-      btnSubmit.disabled = false;
-      btnSubmit.innerHTML = originalText;
-    }, 1200);
-  });
-}
+// O formulário de contato anterior foi removido para focar no atendimento centralizado via WhatsApp.
 
 /**
  * 🐝 6. MODAL INTERATIVO DE DETALHES DAS ESPÉCIES DE ABELHAS (ASF)
