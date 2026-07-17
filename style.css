@@ -1070,6 +1070,26 @@ body.high-contrast .filter-btn.active {
   z-index: 2;
 }
 
+.gallery-overlay-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(38, 28, 20, 0.6) !important; /* Overlay mais sutil para itens sem texto */
+}
+
+.gallery-zoom-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  opacity: 0.8;
+  transform: scale(0.9);
+  transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-zoom-icon {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
 .gallery-item:hover .gallery-overlay {
   opacity: 1;
 }

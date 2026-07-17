@@ -79,17 +79,20 @@ def main():
             
             for arq in arquivos:
                 if arq["tipo"] != "folder":
-                    # Limpa o título tirando a extensão
-                    titulo_limpo = arq["nome"].rsplit(".", 1)[0]
-                    # Substitui traços/underlines por espaços e capitaliza
-                    titulo_limpo = titulo_limpo.replace("-", " ").replace("_", " ").title()
+                    nome_arquivo = arq["nome"]
+                    # Oculta nomes de arquivos genéricos contendo "whatsapp"
+                    if "whatsapp" in nome_arquivo.lower():
+                        titulo_limpo = ""
+                    else:
+                        titulo_limpo = nome_arquivo.rsplit(".", 1)[0]
+                        titulo_limpo = titulo_limpo.replace("-", " ").replace("_", " ").title()
                     
                     galeria_itens.append({
                         "titulo": titulo_limpo,
                         "descricao": "",
                         "url": f"https://drive.google.com/file/d/{arq['id']}/view?usp=sharing",
                         "tipo": arq["tipo"],
-                        "alt": arq["nome"],
+                        "alt": nome_arquivo,
                         "categoria": sub["nome"]
                     })
                     

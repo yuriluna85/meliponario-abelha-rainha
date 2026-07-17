@@ -288,12 +288,22 @@ function renderizarGaleriaDinamica(itens) {
       `;
     }
 
-    innerHTML += `
-      <div class="gallery-overlay">
-        <h3 class="gallery-title">${item.titulo || ''}</h3>
-        <p class="gallery-desc">${item.descricao || ''}</p>
-      </div>
-    `;
+    // Exibe overlay com textos apenas se houver título ou descrição válidos
+    if (item.titulo || item.descricao) {
+      innerHTML += `
+        <div class="gallery-overlay">
+          ${item.titulo ? `<h3 class="gallery-title">${item.titulo}</h3>` : ''}
+          ${item.descricao ? `<p class="gallery-desc">${item.descricao}</p>` : ''}
+        </div>
+      `;
+    } else {
+      // Overlay sutil de zoom/hover caso não tenha textos explicativos
+      innerHTML += `
+        <div class="gallery-overlay gallery-overlay-empty">
+          <div class="gallery-zoom-icon" aria-hidden="true">🔍</div>
+        </div>
+      `;
+    }
 
     galleryItem.innerHTML = innerHTML;
     galleryGrid.appendChild(galleryItem);
@@ -432,12 +442,24 @@ function inicializarGaleriaLightbox() {
       }
     }
 
-    // Configura a legenda
-    let captionText = img ? (img.alt || '') : '';
-    if (title) {
+    // Configura a legenda de forma refinada e limpa
+    let captionText = '';
+    const temTitulo = title && title.textContent.trim();
+    const temDesc = desc && desc.textContent.trim();
+
+    if (temTitulo) {
       captionText = `<strong>${title.textContent}</strong>`;
-      if (desc) captionText += ` — ${desc.textContent}`;
+      if (temDesc) captionText += ` — ${desc.textContent}`;
+    } else if (temDesc) {
+      captionText = desc.textContent;
+    } else {
+      // Se não houver textos, exibe apenas a categoria da foto/vídeo como legenda limpa
+      const category = item.getAttribute('data-categoria');
+      if (category) {
+        captionText = `<span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary-color); font-weight: 700;">${category}</span>`;
+      }
     }
+
     if (lightboxCaption) {
       lightboxCaption.innerHTML = captionText;
     }
