@@ -8,28 +8,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-  /* ---- Paleta Oficial · Mel, Própolis e Mata Atlântica ----
+  /* ---- Paleta Oficial Refinada · Mel, Própolis e Mata Atlântica ----
      Documentação completa dos tokens em README.md > Sistema de Design */
-  --primary-color: #E4A22C;       /* Mel Maduro — cor de assinatura da marca */
-  --primary-hover: #BD8118;       /* Mel Tostado — estados de hover/foco */
-  --primary-soft: #FBEAC7;        /* Mel Diluído — fundos suaves e realces */
-  --secondary-color: #3B2B1F;     /* Própolis — marrom profundo, quase preto */
-  --secondary-hover: #291D14;     /* Própolis Escuro */
-  --accent-color: #5B7A47;        /* Verde Mata Atlântica — natureza e conservação */
-  --accent-hover: #48602F;        /* Verde Mata Escuro */
+  --primary-color: #D4A574;       /* Mel Orgânico — cor de assinatura refinada */
+  --primary-hover: #B8894F;       /* Mel Tostado — estados de hover/foco */
+  --primary-soft: #F5EDE3;        /* Mel Diluído — fundos suaves e realces */
+  --secondary-color: #2D2416;     /* Café Orgânico — marrom profundo e elegante */
+  --secondary-hover: #1F1810;     /* Café Escuro */
+  --accent-color: #6B8E5F;        /* Verde Floresta — natureza e conservação */
+  --accent-hover: #556B4A;        /* Verde Floresta Escuro */
+  --accent-light: #8FA876;        /* Verde Oliva Suave — destaque complementar */
 
   /* Cores Neutras e Estrutura */
-  --bg-light: #FBF7EF;            /* Marfim Quente / Cera de Abelha */
+  --bg-light: #FDFBF7;            /* Marfim Quente Refinado / Cera de Abelha */
   --bg-card: #FFFFFF;             /* Fundo do Card */
-  --text-dark: #241A12;           /* Carvão de Abelha (quase preto) */
-  --text-muted: #6C5D4E;          /* Marrom Mudo / Cinza Quente */
+  --text-dark: #1F1810;           /* Carvão Profundo (quase preto) */
+  --text-muted: #6B6158;          /* Cinza Quente Refinado */
   --text-light: #FFFFFF;          /* Branco */
-  --border-color: #E8DFCC;        /* Borda Suave de Cera */
+  --border-color: #E5DDD0;        /* Borda Suave de Cera Refinada */
 
   /* Efeitos */
-  --shadow-sm: 0 4px 14px rgba(59, 43, 31, 0.05);
-  --shadow-md: 0 10px 28px rgba(59, 43, 31, 0.09);
-  --shadow-lg: 0 20px 48px rgba(59, 43, 31, 0.14);
+  --shadow-sm: 0 4px 12px rgba(45, 36, 22, 0.06);
+  --shadow-md: 0 10px 24px rgba(45, 36, 22, 0.08);
+  --shadow-lg: 0 20px 40px rgba(45, 36, 22, 0.12);
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -601,7 +602,7 @@ body.high-contrast .brand-author::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(36, 26, 18, 0.92) 0%, rgba(36, 26, 18, 0.55) 60%, rgba(251, 247, 239, 0) 100%);
+  background: linear-gradient(135deg, rgba(45, 36, 22, 0.88) 0%, rgba(45, 36, 22, 0.48) 50%, rgba(45, 36, 22, 0.2) 100%);
   z-index: 2;
 }
 
@@ -716,8 +717,14 @@ body.high-contrast .brand-author::after {
    ========================================================================== */
 
 section {
-  padding: 100px 0;
+  padding: 120px 0;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 80px 0;
+  }
 }
 
 .section-alt {
@@ -727,7 +734,7 @@ section {
 .section-header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 60px auto;
+  margin: 0 auto 80px auto;
 }
 
 .section-subtitle {
@@ -864,7 +871,7 @@ section {
 
 .card {
   background-color: var(--bg-card);
-  border-radius: var(--radius-md);
+  border-radius: 24px;
   border: 1px solid var(--border-color);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -874,9 +881,9 @@ section {
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-12px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(228, 162, 44, 0.3);
+  border-color: rgba(212, 165, 116, 0.4);
 }
 
 .card-header-img {
@@ -1038,7 +1045,7 @@ body.high-contrast .filter-btn.active {
 
 .gallery-item {
   position: relative;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   overflow: hidden;
   aspect-ratio: 4/3;
   box-shadow: var(--shadow-sm);
@@ -1128,7 +1135,7 @@ body.high-contrast .filter-btn.active {
 
 .map-container {
   height: 450px;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
@@ -1210,7 +1217,7 @@ body.high-contrast .filter-btn.active {
 .contact-card {
   background-color: var(--bg-card);
   padding: 40px;
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
 }
@@ -2050,14 +2057,14 @@ body.high-contrast .species-modal-text h4 {
    ========================================================================== */
 
 .quote-banner {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, #1c140e 100%);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1410 50%, rgba(107, 142, 95, 0.15) 100%);
   color: var(--text-light);
-  padding: 80px 0;
+  padding: 100px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 3px solid var(--primary-color);
-  border-bottom: 3px solid var(--primary-color);
+  border-top: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .quote-banner .hex-pattern {
