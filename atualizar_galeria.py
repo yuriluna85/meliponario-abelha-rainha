@@ -80,12 +80,8 @@ def main():
             for arq in arquivos:
                 if arq["tipo"] != "folder":
                     nome_arquivo = arq["nome"]
-                    # Oculta nomes de arquivos genéricos contendo "whatsapp"
-                    if "whatsapp" in nome_arquivo.lower():
-                        titulo_limpo = ""
-                    else:
-                        titulo_limpo = nome_arquivo.rsplit(".", 1)[0]
-                        titulo_limpo = titulo_limpo.replace("-", " ").replace("_", " ").title()
+                    # Oculta nomes de arquivos físicos genéricos do Drive por padrão a pedido do usuário
+                    titulo_limpo = ""
                     
                     galeria_itens.append({
                         "titulo": titulo_limpo,
