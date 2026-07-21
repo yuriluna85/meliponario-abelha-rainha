@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://meliponario-abelha-rainha.com.br/sitemap.xml
