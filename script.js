@@ -9,7 +9,7 @@ const CONFIG_GALERIA = {
   // - 'local': Lê os itens diretamente do HTML (convertendo links do Drive se fornecidos lá)
   // - 'json': Lê a partir de um arquivo JSON local configurado
   // - 'api': Lê a partir de uma API externa (como Web App do Google Apps Script)
-  origem: 'json', 
+  origem: 'local', 
   url: 'galeria.json' // Caminho do arquivo JSON ou URL da API
 };
 

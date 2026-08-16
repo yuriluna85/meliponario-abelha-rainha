@@ -47,8 +47,9 @@ Meliponário Abelha Rainha/
   * Padronizada a logo `LOGO.png` como imagem coringa institucional no cartão "Nossa História" da seção de navegação entre páginas.
 - **Página Manufatura e Cutelaria (`manufatura.html`)**:
   * Padronizada a logo `LOGO.png` no cartão de navegação para "Nossa História".
-- **Página Inicial (`index.html`)**:
-  * Consolidada a galeria inicial com exatamente 5 imagens fotográficas autênticas e botão de acesso direto para `galeria.html`.
+- **Página Inicial (`index.html`) e JavaScript (`script.js`)**:
+  * Corrigida a configuração `CONFIG_GALERIA.origem` de `'json'` para `'local'` em `script.js`, impedindo que o script sobrescrevesse a grade estática do HTML com todas as mídias de `galeria.json`.
+  * Fixada permanentemente a exibição de rigorosamente 5 fotos autênticas com botão para `galeria.html`.
 
 ### 16/08/2026 - Módulo 10: Reestruturação Científica de Abelhas, Remapeamento de História e Saneamento da Página Inicial
 - **Página Inicial (`index.html`)**:
