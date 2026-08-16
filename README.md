@@ -40,6 +40,15 @@ Meliponário Abelha Rainha/
 
 ## Log de Atualizações (Changelog)
 
+### 16/08/2026 - Módulo 9: Diagnóstico e Correção de Streaming de Vídeos com Iframes e Remapeamento Factual
+- **Diagnóstico Técnico de Reprodução de Vídeo**: Identificada a causa da não reprodução de vídeos nas tags `<video>` (ausência de suporte do Google Drive a requisições de intervalo *HTTP 206 Partial Content* e *Byte-Range Requests*).
+- **Substituição por Iframes de Streaming Oficial**: Atualizados todos os blocos de vídeo de `manufatura.html`, `historia.html`, `abelhas.html` e `galeria.html` para contêineres responsivos `.video-wrapper` alimentados por `<iframe>` com `https://drive.google.com/file/d/[ID]/preview`, utilizando o player oficial do Google Drive com transcodificação e streaming contínuo.
+- **Correção Factual de Cruzamento de Mídias**:
+  * Em `manufatura.html`: Substituída a foto de Fábio pelo vídeo correto de reciclagem PET (`1O5DwgZ-bfRsx-JAwJ1bV6t2SagNSdDCE`), o vídeo indevido de Uruçu pelo vídeo oficial de criação de mudas (`14KM6HhVS7X09Qr2J4Q_ljQbFEc-XpVMr`) e o vídeo de casinhas pelo vídeo demonstrativo do invento descascador de coco de Luís Sérgio (`1zbpvTqXPQ4V8EEfYikC8wHHynSvOtXOf`).
+  * Em `galeria.html`: Remapeados e validados todos os 12 vídeos do catálogo com seus títulos e IDs oficiais.
+  * Em `historia.html` e `abelhas.html`: Atualizados os vídeos de história e espécies para reprodução nativa por `iframe`.
+- **Saneamento e Acessibilidade**: Removidos links residuais de brindes nos rodapés de todas as páginas e padronizada a pontuação formal e a acentuação em pt-BR.
+
 ### 16/08/2026 - Módulo 8: Refinamento Estrutural, Proteção de Imagens e Foco Institucional
 - **Remoção do Hero Bento Grid**: Excluído o painel de quatro cards de estatísticas no banner inicial de `index.html` e descontinuada a rotina de animação de números associada em `script.js`.
 - **Padronização Visual das Espécies**: Aplicadas as imagens oficiais em alta definição via CDN Google Drive para Uruçu Nordestina e Jataí, e o logotipo oficial `LOGO.png` para a Mandaçaia nos cards e no modal biológico interativo.
@@ -53,7 +62,7 @@ Meliponário Abelha Rainha/
 - **Carregamento Direto por CDN Global**: Atualizados os atributos `src` e `poster` de `historia.html`, `abelhas.html`, `manufatura.html`, `galeria.html` e `index.html` para as URLs de alta velocidade do Google (`https://lh3.googleusercontent.com/d/[ID]`), garantindo exibição instantânea das fotos e vídeos em qualquer ambiente de hospedagem.
 - **Engine de Resiliência em `script.js`**: Implementada a função `inicializarResilienciaMidias()` que monitora falhas de carregamento e chaveia dinamicamente entre a CDN do Google Drive e arquivos locais.
 
-### 📅 16/08/2026 - Módulo 6: Motor de Sincronização de Mídias em Regime Estritamente Manual
+### 16/08/2026 - Módulo 6: Motor de Sincronização de Mídias em Regime Estritamente Manual
 - **Workflow Manual Parametrizado (`.github/workflows/atualizar_galeria.yml`)**: Desativados todos os agendamentos automáticos por cron e gatilhos de push. A sincronização de imagens e vídeos do Google Drive passou a ser acionada exclusivamente sob demanda via `workflow_dispatch`.
 - **Flexibilidade de Entradas**: Adicionados inputs configuráveis no GitHub Actions para definir o ID da pasta do Drive (`pasta_drive_id`, padrão `1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r`) e opção de forçar recriação de `galeria.json`.
 - **Refatoração com Argparse (`atualizar_galeria.py`)**: Script Python atualizado para processar parâmetros via linha de comando e variáveis de ambiente com suporte a UTF-8 puro.
