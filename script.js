@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarMapa();
   carregarGaleria(); // Inicializa e carrega a galeria de fotos/vídeos
   inicializarModalEspecies();
+  inicializarHeroBento();
+  inicializarCockpitEncomendas();
+  inicializarAudioEspecies();
 });
 
 /**
@@ -139,12 +142,32 @@ function inicializarMapa() {
     // Adiciona o marcador principal
     const marker = L.marker([lat, lon], { icon: beeIcon }).addTo(map);
     marker.bindPopup(`
-      <div style="font-family: 'Outfit', sans-serif; padding: 6px;">
-        <h4 style="margin: 0 0 4px 0; color: #262626;">Meliponário Abelha Rainha</h4>
-        <p style="margin: 0; font-size: 0.85rem; color: #595959;">Petecaba, Candeias - BA</p>
-        <a href="https://maps.google.com/?q=${lat},${lon}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 8px; font-size: 0.8rem; font-weight: 700; color: #3E9A2D; text-decoration: none;">Ver no Google Maps →</a>
+      <div style="font-family: 'Outfit', sans-serif; padding: 8px; min-width: 200px;">
+        <h4 style="margin: 0 0 4px 0; color: #2D2416; font-size: 1rem; font-weight: 700;">Meliponário Abelha Rainha</h4>
+        <p style="margin: 0 0 6px 0; font-size: 0.82rem; color: #6B8E5F; font-weight: 600;">Sede &amp; Berçário de Colmeias</p>
+        <p style="margin: 0 0 8px 0; font-size: 0.78rem; color: #6B6158;">Petecaba, Candeias - BA</p>
+        <div style="display: flex; gap: 6px;">
+          <a href="https://maps.google.com/?q=${lat},${lon}" target="_blank" rel="noopener noreferrer" style="font-size: 0.76rem; font-weight: 700; color: #D4A574; text-decoration: none;">Google Maps &rarr;</a>
+          <a href="https://waze.com/ul?ll=${lat},${lon}&navigate=yes" target="_blank" rel="noopener noreferrer" style="font-size: 0.76rem; font-weight: 700; color: #6B8E5F; text-decoration: none;">Waze &rarr;</a>
+        </div>
       </div>
     `).openPopup();
+
+    // Ponto de Trilha de Floração Melífera
+    const markerFloracao = L.circleMarker([lat + 0.0008, lon + 0.0006], {
+      radius: 8,
+      fillColor: '#6B8E5F',
+      color: '#FFFFFF',
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.85
+    }).addTo(map);
+    markerFloracao.bindPopup(`
+      <div style="font-family: 'Outfit', sans-serif; padding: 6px;">
+        <strong style="color: #6B8E5F; font-size: 0.85rem;">Trilha da Aroeira &amp; Assa-peixe</strong>
+        <p style="margin: 4px 0 0 0; font-size: 0.78rem; color: #6B6158;">Área de pasto apícola nativo preservado.</p>
+      </div>
+    `);
 
   } catch (error) {
     console.error('Erro ao carregar o Leaflet Map:', error);
@@ -680,3 +703,127 @@ function inicializarModalEspecies() {
     }
   });
 }
+
+/**
+ * 🌿 6. ANIMAÇÃO DE NÚMEROS DO HERO BENTO GRID (MÓDULO 1)
+ */
+function inicializarHeroBento() {
+  const cards = document.querySelectorAll('.bento-stat-card [data-target]');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        if (isNaN(target)) return;
+
+        let start = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+        const prefix = target > 100 ? '+' : '';
+        const suffix = target === 100 ? '%' : '';
+
+        function animateNumber(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Easing suave (easeOutCubic)
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(easeProgress * target);
+
+          el.textContent = `${prefix}${current.toLocaleString('pt-BR')}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(animateNumber);
+          } else {
+            el.textContent = `${prefix}${target.toLocaleString('pt-BR')}${suffix}`;
+          }
+        }
+
+        requestAnimationFrame(animateNumber);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+}
+
+/**
+ * 📦 7. COCKPIT DE ENCOMENDAS NO WHATSAPP (MÓDULO 4)
+ */
+function inicializarCockpitEncomendas() {
+  const btnEnviar = document.getElementById('btnEnviarEncomendaWhatsApp');
+  if (!btnEnviar) return;
+
+  btnEnviar.addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll('input[name="order_item"]:checked');
+    const itensSelecionados = Array.from(checkboxes).map(cb => cb.value);
+
+    let mensagem = 'Olá, Gabriel Ulisses! Vim pelo site do Meliponário Abelha Rainha.';
+
+    if (itensSelecionados.length > 0) {
+      mensagem += '\n\nGostaria de solicitar informações e encomendar os seguintes itens sustentáveis:';
+      itensSelecionados.forEach((item, index) => {
+        mensagem += `\n${index + 1}. ${item}`;
+      });
+      mensagem += '\n\nPoderia me informar a disponibilidade, prazos e formas de entrega para a minha região?';
+    } else {
+      mensagem += '\n\nGostaria de saber mais sobre as abelhas nativas sem ferrão e produtos disponíveis em Petecaba.';
+    }
+
+    const whatsappUrl = `https://wa.me/5571992724330?text=${encodeURIComponent(mensagem)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  });
+}
+
+/**
+ * 🔊 8. LEITOR DE VOZ NATIVO PARA ESPÉCIES (WEB SPEECH API - MÓDULO 4)
+ */
+function inicializarAudioEspecies() {
+  const botoesAudio = document.querySelectorAll('.btn-audio-species');
+  if (!botoesAudio.length) return;
+
+  const descricoesAudio = {
+    urucu: 'Uruçu Nordestina, Melipona scutellaris. Abelha robusta e dócil da Mata Atlântica. Produz mel floral nobre, levemente ácido e de altíssimo valor medicinal.',
+    mandacaia: 'Mandaçaia, Melipona quadrifasciata. Abelha mansa de listras douradas. Produz mel denso, encorpado e muito aromático para gastronomia refinada.',
+    jatai: 'Jataí, Tetragonisca angustula. Abelha dourada de pequeno porte e grande atividade. Mel de alta acidez e comprovadas propriedades antibacterianas.'
+  };
+
+  botoesAudio.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const speciesKey = btn.getAttribute('data-audio-species');
+      const texto = descricoesAudio[speciesKey];
+      if (!texto) return;
+
+      if (!('speechSynthesis' in window)) {
+        alert('Seu navegador não possui suporte nativo à síntese de voz.');
+        return;
+      }
+
+      window.speechSynthesis.cancel(); // Para qualquer leitura anterior
+
+      const utterance = new SpeechSynthesisUtterance(texto);
+      utterance.lang = 'pt-BR';
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+
+      btn.style.borderColor = 'var(--accent-color)';
+      btn.textContent = 'Ouvindo...';
+
+      utterance.onend = () => {
+        btn.style.borderColor = 'var(--primary-color)';
+        btn.textContent = 'Ouvir Espécie';
+      };
+
+      utterance.onerror = () => {
+        btn.style.borderColor = 'var(--primary-color)';
+        btn.textContent = 'Ouvir Espécie';
+      };
+
+      window.speechSynthesis.speak(utterance);
+    });
+  });
+}
+
+

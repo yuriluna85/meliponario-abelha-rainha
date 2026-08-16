@@ -8,29 +8,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-  /* ---- Paleta Oficial Refinada · Mel, Própolis e Mata Atlântica ----
+  /* ---- Paleta Oficial · Mel, Própolis e Mata Atlântica ----
      Documentação completa dos tokens em README.md > Sistema de Design */
-  --primary-color: #D4A574;       /* Mel Orgânico — cor de assinatura refinada */
-  --primary-hover: #B8894F;       /* Mel Tostado — estados de hover/foco */
-  --primary-soft: #F5EDE3;        /* Mel Diluído — fundos suaves e realces */
-  --secondary-color: #2D2416;     /* Café Orgânico — marrom profundo e elegante */
-  --secondary-hover: #1F1810;     /* Café Escuro */
-  --accent-color: #6B8E5F;        /* Verde Floresta — natureza e conservação */
-  --accent-hover: #556B4A;        /* Verde Floresta Escuro */
-  --accent-light: #8FA876;        /* Verde Oliva Suave — destaque complementar */
+  --primary-color: #E4A22C;       /* Mel Maduro — cor de assinatura da marca */
+  --primary-hover: #BD8118;       /* Mel Tostado — estados de hover/foco */
+  --primary-soft: #FBEAC7;        /* Mel Diluído — fundos suaves e realces */
+  --secondary-color: #3B2B1F;     /* Própolis — marrom profundo, quase preto */
+  --secondary-hover: #291D14;     /* Própolis Escuro */
+  --accent-color: #5B7A47;        /* Verde Mata Atlântica — natureza e conservação */
+  --accent-hover: #48602F;        /* Verde Mata Escuro */
 
   /* Cores Neutras e Estrutura */
-  --bg-light: #FDFBF7;            /* Marfim Quente Refinado / Cera de Abelha */
+  --bg-light: #FBF7EF;            /* Marfim Quente / Cera de Abelha */
   --bg-card: #FFFFFF;             /* Fundo do Card */
-  --text-dark: #1F1810;           /* Carvão Profundo (quase preto) */
-  --text-muted: #6B6158;          /* Cinza Quente Refinado */
+  --text-dark: #241A12;           /* Carvão de Abelha (quase preto) */
+  --text-muted: #6C5D4E;          /* Marrom Mudo / Cinza Quente */
   --text-light: #FFFFFF;          /* Branco */
-  --border-color: #E5DDD0;        /* Borda Suave de Cera Refinada */
+  --border-color: #E8DFCC;        /* Borda Suave de Cera */
 
   /* Efeitos */
-  --shadow-sm: 0 4px 12px rgba(45, 36, 22, 0.06);
-  --shadow-md: 0 10px 24px rgba(45, 36, 22, 0.08);
-  --shadow-lg: 0 20px 40px rgba(45, 36, 22, 0.12);
+  --shadow-sm: 0 4px 14px rgba(59, 43, 31, 0.05);
+  --shadow-md: 0 10px 28px rgba(59, 43, 31, 0.09);
+  --shadow-lg: 0 20px 48px rgba(59, 43, 31, 0.14);
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -371,13 +370,9 @@ header {
   gap: 12px;
 }
 
-.logo-img {
+.logo-svg {
   width: 44px;
   height: 44px;
-  object-fit: contain;
-  border-radius: 50%;
-  border: 1.5px solid var(--primary-color);
-  background-color: var(--bg-card);
 }
 
 .logo-text {
@@ -606,7 +601,7 @@ body.high-contrast .brand-author::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(45, 36, 22, 0.88) 0%, rgba(45, 36, 22, 0.48) 50%, rgba(45, 36, 22, 0.2) 100%);
+  background: linear-gradient(135deg, rgba(36, 26, 18, 0.92) 0%, rgba(36, 26, 18, 0.55) 60%, rgba(251, 247, 239, 0) 100%);
   z-index: 2;
 }
 
@@ -721,14 +716,8 @@ body.high-contrast .brand-author::after {
    ========================================================================== */
 
 section {
-  padding: 120px 0;
+  padding: 100px 0;
   position: relative;
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 80px 0;
-  }
 }
 
 .section-alt {
@@ -738,7 +727,7 @@ section {
 .section-header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 80px auto;
+  margin: 0 auto 60px auto;
 }
 
 .section-subtitle {
@@ -875,7 +864,7 @@ section {
 
 .card {
   background-color: var(--bg-card);
-  border-radius: 24px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -885,9 +874,9 @@ section {
 }
 
 .card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(212, 165, 116, 0.4);
+  border-color: rgba(228, 162, 44, 0.3);
 }
 
 .card-header-img {
@@ -1049,7 +1038,7 @@ body.high-contrast .filter-btn.active {
 
 .gallery-item {
   position: relative;
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   aspect-ratio: 4/3;
   box-shadow: var(--shadow-sm);
@@ -1139,7 +1128,7 @@ body.high-contrast .filter-btn.active {
 
 .map-container {
   height: 450px;
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
@@ -1212,163 +1201,122 @@ body.high-contrast .filter-btn.active {
    FORMULÁRIO DE CONTATO
    ========================================================================== */
 
-.whatsapp-contact-container {
+.contact-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
 }
 
-.whatsapp-contact-card {
+.contact-card {
   background-color: var(--bg-card);
-  padding: 48px;
-  border-radius: 24px;
+  padding: 40px;
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
 }
 
-.whatsapp-contact-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-  background-color: var(--accent-color);
+.form-group {
+  margin-bottom: 24px;
 }
 
-.whatsapp-card-badge {
-  display: inline-block;
-  background-color: rgba(107, 142, 95, 0.1);
-  color: var(--accent-color);
-  font-family: var(--font-title);
+.form-label {
+  display: block;
+  margin-bottom: 8px;
   font-weight: 700;
-  font-size: 0.8rem;
-  padding: 6px 14px;
-  border-radius: 50px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
-}
-
-.whatsapp-card-title {
-  font-size: 1.75rem;
+  font-size: 0.9rem;
   color: var(--text-dark);
-  margin-bottom: 4px;
-}
-
-.whatsapp-card-subtitle {
   font-family: var(--font-title);
-  color: var(--primary-hover);
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
-.whatsapp-card-desc {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.6;
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: #FFFDF9;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(91, 122, 71, 0.15);
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-cta {
+  background-color: rgba(228, 162, 44, 0.08);
+  border: 1px dashed var(--primary-color);
+  border-radius: var(--radius-md);
+  padding: 32px;
   margin-bottom: 32px;
 }
 
-.whatsapp-btn-large {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 16px 28px;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 1.05rem;
-  background-color: var(--accent-color);
-  color: var(--text-light);
-  border: 2px solid var(--accent-color);
-  transition: var(--transition);
-  cursor: pointer;
+.contact-cta h4 {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 12px;
 }
 
-.whatsapp-btn-large:hover,
-.whatsapp-btn-large:focus {
-  background-color: var(--accent-hover);
-  border-color: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(107, 142, 95, 0.25);
-  outline: none;
+.contact-cta p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
-.whatsapp-contact-details {
+.contact-meta {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-}
-
-.contact-detail-item {
-  display: flex;
-  align-items: flex-start;
   gap: 20px;
 }
 
-.contact-detail-item .detail-icon {
+.contact-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-meta-item .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   clip-path: var(--hex-clip);
   background-color: var(--primary-soft);
   color: var(--secondary-color);
-  font-size: 1.2rem;
 }
 
-.contact-detail-item .detail-text strong {
-  display: block;
+.contact-meta-item .icon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.contact-meta-item .text h5 {
+  font-size: 0.9rem;
   color: var(--text-dark);
-  font-family: var(--font-title);
+}
+
+.contact-meta-item .text p {
   font-size: 1rem;
-  margin-bottom: 4px;
-}
-
-.contact-detail-item .detail-text p {
   color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.4;
-  margin: 0;
-}
-
-body.high-contrast .whatsapp-contact-card {
-  background-color: #000000 !important;
-  border: 2px solid #FFD700 !important;
-}
-
-body.high-contrast .whatsapp-card-badge {
-  background-color: #000000 !important;
-  color: #FFD700 !important;
-  border: 1px solid #FFD700 !important;
-}
-
-body.high-contrast .whatsapp-btn-large {
-  background-color: #FFD700 !important;
-  color: #000000 !important;
-  border-color: #FFD700 !important;
-}
-
-body.high-contrast .contact-detail-item .detail-icon {
-  background-color: #111111 !important;
-  color: #FFD700 !important;
-  border: 1px solid #FFD700 !important;
-}
-
-@media (max-width: 992px) {
-  .whatsapp-contact-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
 }
 
 /* ==========================================================================
@@ -2102,14 +2050,14 @@ body.high-contrast .species-modal-text h4 {
    ========================================================================== */
 
 .quote-banner {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1410 50%, rgba(107, 142, 95, 0.15) 100%);
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #1c140e 100%);
   color: var(--text-light);
-  padding: 100px 0;
+  padding: 80px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 2px solid var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
+  border-top: 3px solid var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
 }
 
 .quote-banner .hex-pattern {
@@ -2176,759 +2124,4 @@ body.high-contrast .quote-author strong {
 
 body.high-contrast .quote-author span {
   color: #FFFFFF !important;
-}
-
-/* ==========================================================================
-   HERO BENTO GRID DE IMPACTO ECOLÓGICO (MÓDULO 1)
-   ========================================================================== */
-.hero-bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2.5rem;
-  width: 100%;
-  max-width: 1050px;
-}
-
-.bento-stat-card {
-  background: rgba(253, 251, 247, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 165, 116, 0.4);
-  border-radius: var(--radius-md);
-  padding: 1.4rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 10px 24px rgba(45, 36, 22, 0.12);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.bento-stat-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary-color);
-  box-shadow: 0 16px 32px rgba(212, 165, 116, 0.25), 0 0 16px rgba(107, 142, 95, 0.15);
-}
-
-.bento-stat-number {
-  font-family: var(--font-title);
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--secondary-color);
-  line-height: 1.1;
-  margin-bottom: 0.35rem;
-  display: block;
-}
-
-.bento-stat-label {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  line-height: 1.3;
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
-.bento-stat-sub {
-  font-size: 0.76rem;
-  color: var(--text-muted);
-  line-height: 1.35;
-  display: block;
-}
-
-body.high-contrast .bento-stat-card {
-  background: #000000 !important;
-  border: 2px solid #FFD700 !important;
-  box-shadow: none !important;
-}
-
-body.high-contrast .bento-stat-number {
-  color: #FFD700 !important;
-}
-
-body.high-contrast .bento-stat-label {
-  color: #00FFFF !important;
-}
-
-body.high-contrast .bento-stat-sub {
-  color: #FFFFFF !important;
-}
-
-@media (max-width: 768px) {
-  .hero-bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
-    margin-top: 1.75rem;
-  }
-
-  .bento-stat-card {
-    padding: 1rem 0.75rem;
-  }
-
-  .bento-stat-number {
-    font-size: 1.35rem;
-  }
-
-  .bento-stat-label {
-    font-size: 0.8rem;
-  }
-
-  .bento-stat-sub {
-    font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-bento-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==========================================================================
-   CATÁLOGO SENSORIAL DE MÉIS & GUIA DO CRIADOR (MÓDULO 2)
-   ========================================================================== */
-.sensorial-profile {
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1px dashed var(--border-color);
-}
-
-.sensorial-title {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.6rem;
-  display: block;
-}
-
-.sensorial-metric {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.45rem;
-  font-size: 0.76rem;
-  color: var(--text-muted);
-}
-
-.metric-bar {
-  flex: 1;
-  max-width: 130px;
-  height: 6px;
-  background: var(--border-color);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.metric-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary-color) 0%, #EAB308 100%);
-  border-radius: 10px;
-  transition: width 0.8s ease;
-}
-
-body.high-contrast .metric-bar {
-  background: #333333;
-}
-
-body.high-contrast .metric-fill {
-  background: #FFD700;
-}
-
-/* Guia do Meliponicultor Iniciante */
-.beginner-guide-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-}
-
-.guide-box {
-  background: var(--bg-light);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.35rem;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.guide-box:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent-color);
-  box-shadow: 0 8px 20px rgba(107, 142, 95, 0.15);
-}
-
-.guide-badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--accent-color);
-  background: rgba(107, 142, 95, 0.12);
-  padding: 3px 8px;
-  border-radius: 6px;
-  margin-bottom: 0.6rem;
-}
-
-.guide-box-title {
-  font-family: var(--font-title);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  margin-bottom: 0.4rem;
-}
-
-.guide-box-desc {
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-body.high-contrast .guide-box {
-  background: #000000 !important;
-  border: 2px solid #00FFFF !important;
-}
-
-body.high-contrast .guide-badge {
-  background: #000000;
-  color: #00FFFF;
-  border: 1px solid #00FFFF;
-}
-
-body.high-contrast .guide-box-title {
-  color: #FFD700;
-}
-
-body.high-contrast .guide-box-desc {
-  color: #FFFFFF;
-}
-
-/* ==========================================================================
-   CALENDÁRIO DE FLORAÇÃO MELÍFERA & MAPA (MÓDULO 3)
-   ========================================================================== */
-.flowering-timeline-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-}
-
-.timeline-season-card {
-  background: var(--bg-light);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1.35rem;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.timeline-season-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary-color);
-  box-shadow: 0 8px 20px rgba(212, 165, 116, 0.2);
-}
-
-.season-badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--primary-color);
-  background: rgba(212, 165, 116, 0.15);
-  padding: 3px 8px;
-  border-radius: 6px;
-  margin-bottom: 0.6rem;
-}
-
-.season-title {
-  font-family: var(--font-title);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  margin-bottom: 0.4rem;
-}
-
-.season-desc {
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-body.high-contrast .timeline-season-card {
-  background: #000000 !important;
-  border: 2px solid #FFD700 !important;
-}
-
-body.high-contrast .season-badge {
-  background: #000000;
-  color: #FFD700;
-  border: 1px solid #FFD700;
-}
-
-body.high-contrast .season-title {
-  color: #00FFFF;
-}
-
-body.high-contrast .season-desc {
-  color: #FFFFFF;
-}
-
-/* ==========================================================================
-   COCKPIT DE ENCOMENDAS & ACESSIBILIDADE UNIVERSAL (MÓDULO 4)
-   ========================================================================== */
-.order-items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.order-item-checkbox {
-  display: block;
-  cursor: pointer;
-  position: relative;
-}
-
-.order-item-checkbox input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.order-item-box {
-  background: var(--bg-light);
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 1rem 1.1rem;
-  transition: all 0.25s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.order-item-box strong {
-  font-family: var(--font-title);
-  font-size: 0.95rem;
-  color: var(--secondary-color);
-  margin-bottom: 0.25rem;
-}
-
-.order-item-box span {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.order-item-checkbox input[type="checkbox"]:checked + .order-item-box {
-  background: rgba(212, 165, 116, 0.12);
-  border-color: var(--primary-color);
-  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.2);
-}
-
-.order-item-checkbox input[type="checkbox"]:focus-visible + .order-item-box {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-.btn-audio-species:hover {
-  background: var(--primary-color) !important;
-  color: #FFFFFF !important;
-}
-
-body.high-contrast .order-cockpit-card {
-  background: #000000 !important;
-  border: 2px solid #FFD700 !important;
-}
-
-body.high-contrast .order-item-box {
-  background: #000000 !important;
-  border: 1px solid #FFFFFF !important;
-}
-
-body.high-contrast .order-item-box strong {
-  color: #FFD700 !important;
-}
-
-body.high-contrast .order-item-box span {
-  color: #FFFFFF !important;
-}
-
-body.high-contrast .order-item-checkbox input[type="checkbox"]:checked + .order-item-box {
-  border: 2px solid #00FFFF !important;
-  background: #111111 !important;
-}
-
-body.high-contrast .btn-audio-species {
-  border-color: #FFD700 !important;
-  color: #FFD700 !important;
-}
-
-/* ==========================================================================
-   ESTILOS PARA AS NOVAS PÁGINAS (HISTÓRIA, ABELHAS, MANUFATURA, GALERIA)
-   ========================================================================== */
-
-.page-hero {
-  background: linear-gradient(135deg, rgba(45, 36, 22, 0.96) 0%, rgba(31, 24, 16, 0.98) 100%), url('WhatsApp Image 2026-07-12 at 15.53.49.jpeg') center/cover no-repeat;
-  color: var(--text-light);
-  padding: 80px 0 60px 0;
-  text-align: center;
-  position: relative;
-  border-bottom: 3px solid var(--primary-color);
-}
-
-.page-hero-title {
-  font-family: var(--font-title);
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  margin-top: 12px;
-  margin-bottom: 16px;
-  line-height: 1.2;
-}
-
-.page-hero-subtitle {
-  font-family: var(--font-body);
-  font-size: 1.15rem;
-  color: #E5DDD0;
-  max-width: 840px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.section-container {
-  padding: 70px 0;
-}
-
-.section-alternate {
-  background-color: #F8F4EC;
-}
-
-.story-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.story-grid-reverse {
-  direction: rtl;
-}
-
-.story-grid-reverse > * {
-  direction: ltr;
-}
-
-.photo-frame {
-  background: #FFFFFF;
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 12px;
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-sm);
-  display: block;
-  object-fit: cover;
-}
-
-.photo-legend {
-  padding: 14px 8px 4px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.photo-legend strong {
-  font-family: var(--font-title);
-  color: var(--secondary-color);
-  font-size: 1.05rem;
-}
-
-.photo-legend span {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.badge-organic {
-  display: inline-block;
-  background: rgba(212, 165, 116, 0.18);
-  color: #8C5E2D;
-  border: 1px solid rgba(212, 165, 116, 0.4);
-  padding: 6px 16px;
-  border-radius: 30px;
-  font-family: var(--font-title);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 14px;
-}
-
-.section-heading {
-  font-family: var(--font-title);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  line-height: 1.25;
-  margin-bottom: 18px;
-}
-
-.paragraph-lead {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--secondary-color);
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-
-.story-text-col p {
-  color: #4A3E31;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 14px;
-}
-
-.video-showcase-box {
-  background: #FFFFFF;
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  background: #000000;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: auto;
-  max-height: 480px;
-  display: block;
-  object-fit: cover;
-}
-
-.video-caption-box {
-  padding: 24px;
-  background: #FFFFFF;
-}
-
-.video-caption-box h3 {
-  font-family: var(--font-title);
-  font-size: 1.3rem;
-  color: var(--secondary-color);
-  margin-top: 6px;
-  margin-bottom: 8px;
-}
-
-.video-caption-box p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  margin: 0;
-}
-
-.grid-2-col {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 32px;
-  margin-top: 36px;
-}
-
-.grid-3-col {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-  margin-top: 36px;
-}
-
-.gallery-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 36px;
-}
-
-.gallery-photo-card {
-  background: #FFFFFF;
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-}
-
-.gallery-photo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.gallery-photo-card img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  display: block;
-}
-
-.gallery-photo-info {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.gallery-photo-info strong {
-  font-family: var(--font-title);
-  color: var(--secondary-color);
-  font-size: 1rem;
-}
-
-.gallery-photo-info span {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.cards-cta-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  max-width: 900px;
-  margin: 36px auto 0 auto;
-  text-align: left;
-}
-
-.nav-card-cta {
-  background: #FFFFFF;
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  text-decoration: none;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-card-cta:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary-color);
-  box-shadow: var(--shadow-lg);
-}
-
-.nav-card-cta img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-}
-
-.nav-card-cta-body {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.nav-card-cta-body h3 {
-  font-family: var(--font-title);
-  color: var(--secondary-color);
-  font-size: 1.3rem;
-  margin-bottom: 8px;
-}
-
-.nav-card-cta-body p {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-.cta-link-text {
-  font-family: var(--font-title);
-  font-weight: 700;
-  color: #B37D3C;
-  font-size: 0.95rem;
-}
-
-/* Responsividade para novas páginas */
-@media (max-width: 900px) {
-  .story-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .story-grid-reverse {
-    direction: ltr;
-  }
-  .page-hero-title {
-    font-size: 2.2rem;
-  }
-}
-
-/* Alto Contraste para Novas Páginas */
-body.high-contrast .page-hero {
-  background: #000000 !important;
-  border-bottom: 3px solid #FFD700 !important;
-}
-
-body.high-contrast .page-hero-title {
-  color: #FFD700 !important;
-}
-
-body.high-contrast .page-hero-subtitle {
-  color: #FFFFFF !important;
-}
-
-body.high-contrast .section-alternate {
-  background-color: #111111 !important;
-}
-
-body.high-contrast .photo-frame,
-body.high-contrast .video-showcase-box,
-body.high-contrast .gallery-photo-card,
-body.high-contrast .nav-card-cta {
-  background: #000000 !important;
-  border: 2px solid #FFD700 !important;
-}
-
-body.high-contrast .video-caption-box {
-  background: #000000 !important;
-}
-
-body.high-contrast .section-heading,
-body.high-contrast .photo-legend strong,
-body.high-contrast .video-caption-box h3,
-body.high-contrast .gallery-photo-info strong,
-body.high-contrast .nav-card-cta-body h3,
-body.high-contrast .paragraph-lead {
-  color: #FFD700 !important;
-}
-
-body.high-contrast .story-text-col p,
-body.high-contrast .photo-legend span,
-body.high-contrast .video-caption-box p,
-body.high-contrast .gallery-photo-info span,
-body.high-contrast .nav-card-cta-body p {
-  color: #FFFFFF !important;
-}
-
-body.high-contrast .badge-organic {
-  background: #000000 !important;
-  color: #00FFFF !important;
-  border-color: #00FFFF !important;
-}
-
-body.high-contrast .cta-link-text {
-  color: #00FFFF !important;
 }

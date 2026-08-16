@@ -59,11 +59,12 @@
       <!-- Navegação Principal -->
       <nav aria-label="Menu de Navegação Principal">
         <ul class="nav-menu">
-          <li class="nav-item"><a href="#inicio">Início</a></li>
-          <li class="nav-item"><a href="#historia">Nossa História</a></li>
-          <li class="nav-item"><a href="#abelhas">Nossas Abelhas</a></li>
-          <li class="nav-item"><a href="#galeria">Galeria</a></li>
-          <li class="nav-item"><a href="#localizacao">Localização</a></li>
+          <li class="nav-item"><a href="index.html" class="active" aria-current="page">Início</a></li>
+          <li class="nav-item"><a href="historia.html">Nossa História</a></li>
+          <li class="nav-item"><a href="abelhas.html">Nossas Abelhas</a></li>
+          <li class="nav-item"><a href="manufatura.html">Manufatura e Cutelaria</a></li>
+          <li class="nav-item"><a href="galeria.html">Galeria</a></li>
+          <li class="nav-item"><a href="brindes.html">Brindes</a></li>
           <li class="nav-item"><a href="#contato">Contato</a></li>
         </ul>
       </nav>
@@ -96,6 +97,30 @@
         <div class="hero-actions">
           <a href="#historia" class="btn btn-primary">Conhecer História</a>
           <a href="#contato" class="btn btn-secondary">Entrar em Contato</a>
+        </div>
+
+        <!-- Painel Bento de Impacto Ecológico (Módulo 1) -->
+        <div class="hero-bento-grid" aria-label="Estatísticas de Impacto e Preservação">
+          <div class="bento-stat-card">
+            <span class="bento-stat-number" data-target="100">100%</span>
+            <span class="bento-stat-label">Abelhas Nativas Sem Ferrão</span>
+            <span class="bento-stat-sub">Manejo racional sustentável</span>
+          </div>
+          <div class="bento-stat-card">
+            <span class="bento-stat-number">Petecaba</span>
+            <span class="bento-stat-label">Mata Atlântica Preservada</span>
+            <span class="bento-stat-sub">Candeias, Recôncavo Baiano</span>
+          </div>
+          <div class="bento-stat-card">
+            <span class="bento-stat-number" data-target="1500">+1.500</span>
+            <span class="bento-stat-label">Flores &amp; Plantas Visitadas</span>
+            <span class="bento-stat-sub">Polinização e biodiversidade ativa</span>
+          </div>
+          <div class="bento-stat-card">
+            <span class="bento-stat-number">INPA</span>
+            <span class="bento-stat-label">Caixas Modulares Racionais</span>
+            <span class="bento-stat-sub">Colheita higiênica e bem-estar</span>
+          </div>
         </div>
       </div>
     </section>
@@ -153,39 +178,58 @@
       </div>
     </section>
 
-    <!-- SEÇÃO ESPÉCIES / PRODUTOS -->
+    <!-- SEÇÃO ESPÉCIES / CATÁLOGO SENSORIAL ASF (MÓDULO 2) -->
     <section id="abelhas" class="section-alt">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">Educação e Preservação</span>
-          <h2 class="section-title">Nossas Espécies de <span>Abelhas Nativas</span></h2>
+          <span class="section-subtitle">Catálogo Sensorial &amp; Preservação</span>
+          <h2 class="section-title">Nossas Espécies de <span>Abelhas Sem Ferrão (ASF)</span></h2>
           <p class="section-desc">
-            Cultivamos espécies nativas do Brasil (Meliponíneos), cada uma com suas características biológicas, hábitos de polinização e méis de sabor único sob os cuidados de Gabriel Ulisses Barbosa.
+            Cultivamos espécies nativas da Mata Atlântica e do semiárido baiano. Conheça as características biológicas de cada abelha e o perfil sensorial de seus méis artesanais.
           </p>
         </div>
 
-        <div class="cards-grid">
-          <!-- Card Uruçu -->
-          <article class="card">
+        <div class="cards-grid sensorial-grid">
+          <!-- Card Uruçu Nordestina -->
+          <article class="card sensorial-card">
             <div class="card-header-img">
               <img src="WhatsApp%20Image%202026-07-12%20at%2015.54.01.jpeg" alt="Uruçu Nordestina no ninho">
-              <span class="card-badge">Nativa</span>
+              <span class="card-badge">Nativa Emblemática</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Uruçu Nordestina</h3>
               <span class="card-subtitle">Melipona scutellaris</span>
               <p class="card-text">
-                Uma das abelhas sem ferrão mais emblemáticas do Nordeste brasileiro. Destaca-se pelo seu tamanho robusto e pela produção de um mel levemente ácido, refrescante e altamente valorizado pelas suas propriedades medicinais.
+                Robusta e dócil, a Uruçu é o símbolo da meliponicultura nordestina. Produz um mel floral nobre, levemente ácido e com altíssimo valor medicinal e gastronômico.
               </p>
+              
+              <!-- Perfil Sensorial do Mel -->
+              <div class="sensorial-profile">
+                <span class="sensorial-title">Perfil Sensorial do Mel:</span>
+                <div class="sensorial-metric">
+                  <span>Doçura</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="sensorial-metric">
+                  <span>Acidez Floral</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 70%;"></div></div>
+                </div>
+                <div class="sensorial-metric">
+                  <span>Fluidez / Umidade</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 90%;"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="card-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Bioma: Mata Atlântica</span>
-              <button class="card-link species-trigger" data-species="urucu" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Saber mais →</button>
+            <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+              <button class="btn-audio-species" data-audio-species="urucu" title="Ouvir descrição da Uruçu Nordestina" aria-label="Ouvir descrição da Uruçu Nordestina" style="background: none; border: 1px solid var(--primary-color); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; color: var(--secondary-color); cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                Ouvir Espécie
+              </button>
+              <button class="card-link species-trigger" data-species="urucu" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Ficha Técnica &rarr;</button>
             </div>
           </article>
 
           <!-- Card Mandaçaia -->
-          <article class="card">
+          <article class="card sensorial-card">
             <div class="card-header-img">
               <img src="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg" alt="Colmeia racional de Mandaçaia">
               <span class="card-badge">Preservação</span>
@@ -194,17 +238,36 @@
               <h3 class="card-title">Mandaçaia</h3>
               <span class="card-subtitle">Melipona quadrifasciata</span>
               <p class="card-text">
-                Com listras amarelas marcantes no abdômen, a Mandaçaia constrói ninhos organizados em troncos ocos. Seu mel é denso, doce e aromático, excelente para a gastronomia refinada e fortalecimento do sistema imunológico.
+                Construção impecável com listras douradas. Seu mel é encorpado, denso e aromático, excelente para harmonizações refinadas e fortalecimento imunológico.
               </p>
+
+              <!-- Perfil Sensorial do Mel -->
+              <div class="sensorial-profile">
+                <span class="sensorial-title">Perfil Sensorial do Mel:</span>
+                <div class="sensorial-metric">
+                  <span>Doçura</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 95%;"></div></div>
+                </div>
+                <div class="sensorial-metric">
+                  <span>Acidez Floral</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 40%;"></div></div>
+                </div>
+                <div class="sensorial-metric">
+                  <span>Densidade</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 80%;"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="card-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Comportamento: Manso</span>
-              <button class="card-link species-trigger" data-species="mandacaia" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Saber mais →</button>
+            <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+              <button class="btn-audio-species" data-audio-species="mandacaia" title="Ouvir descrição da Mandaçaia" aria-label="Ouvir descrição da Mandaçaia" style="background: none; border: 1px solid var(--primary-color); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; color: var(--secondary-color); cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                Ouvir Espécie
+              </button>
+              <button class="card-link species-trigger" data-species="mandacaia" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Ficha Técnica &rarr;</button>
             </div>
           </article>
 
           <!-- Card Jataí -->
-          <article class="card">
+          <article class="card sensorial-card">
             <div class="card-header-img">
               <img src="WhatsApp%20Image%202026-07-12%20at%2015.57.24.jpeg" alt="Entrada característica do ninho de Jataí">
               <span class="card-badge">Resistente</span>
@@ -213,14 +276,61 @@
               <h3 class="card-title">Jataí</h3>
               <span class="card-subtitle">Tetragonisca angustula</span>
               <p class="card-text">
-                Pequena, ativa e adaptável. Reconhecida pelo seu tubo de entrada feito de cera e própolis. O mel de Jataí é famoso mundialmente, possuindo alta acidez e compostos bioativos excepcionais recomendados para a saúde.
+                Pequena e trabalhadora, famosa pelo tubo ceroso de entrada. Mel dourado claro, fino, de acidez viva e alto poder antimicrobiano natural.
               </p>
+
+              <!-- Perfil Sensorial do Mel -->
+              <div class="sensorial-profile">
+                <span class="sensorial-title">Perfil Sensorial do Mel:</span>
+                <div class="sensorial-metric">
+                  <span>Doçura</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 75%;"></div></div>
+                </div>
+                <div class="sensorial-metric">
+                  <span>Acidez Cítrica</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="sensorial-metric">
+                  <span>Compostos Bioativos</span>
+                  <div class="metric-bar"><div class="metric-fill" style="width: 95%;"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="card-footer">
-              <span style="font-size: 0.85rem; color: var(--text-muted);">Ação: Polinizadora</span>
-              <button class="card-link species-trigger" data-species="jatai" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Saber mais →</button>
+            <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+              <button class="btn-audio-species" data-audio-species="jatai" title="Ouvir descrição da Jataí" aria-label="Ouvir descrição da Jataí" style="background: none; border: 1px solid var(--primary-color); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; color: var(--secondary-color); cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                Ouvir Espécie
+              </button>
+              <button class="card-link species-trigger" data-species="jatai" aria-haspopup="dialog" aria-expanded="false" style="background: none; border: none; cursor: pointer; padding: 0;">Ficha Técnica &rarr;</button>
             </div>
           </article>
+        </div>
+
+        <!-- Guia do Meliponicultor Iniciante (Módulo 2) -->
+        <div class="beginner-guide-wrapper" style="margin-top: 3rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
+          <div class="section-header" style="margin-bottom: 1.5rem; text-align: left;">
+            <span class="section-subtitle">Guia Prático</span>
+            <h3 class="section-title" style="font-size: 1.5rem;">Qual Abelha Sem Ferrão Combina com o seu Espaço?</h3>
+            <p class="section-desc" style="margin-left: 0;">
+              Descubra a espécie ideal para iniciar a criação racional de acordo com o ambiente disponível em sua casa, varanda ou sítio:
+            </p>
+          </div>
+          <div class="beginner-guide-grid">
+            <div class="guide-box">
+              <span class="guide-badge">Varandas &amp; Jardins Urbanos</span>
+              <h4 class="guide-box-title">Abelha Jataí ou Iraí</h4>
+              <p class="guide-box-desc">Ninhos pequenos, comportamento 100% inofensivo e excelente adaptação a vasos de flores, hortas domésticas e sacadas.</p>
+            </div>
+            <div class="guide-box">
+              <span class="guide-badge">Quintais com Sombra</span>
+              <h4 class="guide-box-title">Abelha Mandaçaia</h4>
+              <p class="guide-box-desc">Exige locais frescos e sombreados. Colmeias robustas com alta produção de mel denso e fácil divisão racional.</p>
+            </div>
+            <div class="guide-box">
+              <span class="guide-badge">Chácaras &amp; Sítios</span>
+              <h4 class="guide-box-title">Uruçu Nordestina</h4>
+              <p class="guide-box-desc">Ideal para áreas verdes amplas na Mata Atlântica. Rainha da polinização de árvores frutíferas e grande produtora de mel.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -285,7 +395,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">Manjericão e Cosmos</h3>
-              <span class="card-subtitle">Ocimum basilicum & Cosmos spp.</span>
+              <span class="card-subtitle">Ocimum basilicum &amp; Cosmos spp.</span>
               <p class="card-text" style="text-align: justify;">
                 Plantas de crescimento rápido e fácil manejo doméstico. Produzem flores perfumadas e ricas em pólen que atraem espécies de menor porte, como a Iraí e a Jataí, estimulando o cultivo em pequenos jardins e quintais de Petecaba.
               </p>
@@ -294,6 +404,34 @@
               <span style="font-size: 0.85rem; color: var(--text-muted);">Floração: Primavera/Verão</span>
             </div>
           </article>
+        </div>
+
+        <!-- Calendário Sazonal de Floração Melífera na Bahia (Módulo 3) -->
+        <div class="flowering-calendar-wrapper" style="margin-top: 3rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
+          <div class="section-header" style="margin-bottom: 1.5rem; text-align: left;">
+            <span class="section-subtitle">Pasto Apícola</span>
+            <h3 class="section-title" style="font-size: 1.5rem;">Calendário de Floração Melífera em Petecaba</h3>
+            <p class="section-desc" style="margin-left: 0;">
+              O ciclo anual de produção de néctar e pólen na região do Recôncavo Baiano:
+            </p>
+          </div>
+          <div class="flowering-timeline-grid">
+            <div class="timeline-season-card">
+              <span class="season-badge">Outono / Inverno</span>
+              <h4 class="season-title">Assa-peixe &amp; Cipó-uva</h4>
+              <p class="season-desc">Florada vital para manutenção de força das colônias de Uruçu e Jataí no período de chuvas.</p>
+            </div>
+            <div class="timeline-season-card">
+              <span class="season-badge">Primavera</span>
+              <h4 class="season-title">Aroeira-mansa &amp; Silvestres</h4>
+              <p class="season-desc">Pico de produção de pólen proteico, favorecendo a multiplicação de enxames e posturas de rainha.</p>
+            </div>
+            <div class="timeline-season-card">
+              <span class="season-badge">Verão</span>
+              <h4 class="season-title">Frutíferas &amp; Mangueiras</h4>
+              <p class="season-desc">Grande oferta de néctar floral denso, propiciando a maturação dos méis aromáticos de Mandaçaia.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -355,6 +493,15 @@
             </div>
           </div>
         </div>
+
+        <div style="margin-top: 36px; text-align: center; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <a href="galeria.html" class="btn btn-primary" style="padding: 12px 24px; font-weight: 700;">
+            Ver Galeria Completa &rarr;
+          </a>
+          <a href="https://drive.google.com/drive/folders/1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 12px 24px; font-weight: 600;">
+            Pasta Online no Google Drive &rarr;
+          </a>
+        </div>
       </div>
     </section>
 
@@ -407,38 +554,102 @@
               </li>
             </ul>
 
-            <a href="https://maps.google.com/?q=-12.677947,-38.448682" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              Ver Rotas no Google Maps
-            </a>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem;">
+              <a href="https://maps.google.com/?q=-12.677947,-38.448682" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.85rem; padding: 10px 18px;">
+                Google Maps &rarr;
+              </a>
+              <a href="https://waze.com/ul?ll=-12.677947,-38.448682&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 10px 18px;">
+                Abrir no Waze &rarr;
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEÇÃO CONTATO -->
+    <!-- SEÇÃO CONTATO & COCKPIT DE ENCOMENDAS (MÓDULO 4) -->
     <section id="contato">
       <div class="container">
         <div class="section-header">
-          <span class="section-subtitle">Atendimento</span>
-          <h2 class="section-title">Fale Conosco pelo <span>WhatsApp</span></h2>
+          <span class="section-subtitle">Atendimento &amp; Encomendas</span>
+          <h2 class="section-title">Encomendas Artesanais &amp; <span>Atendimento VIP</span></h2>
           <p class="section-desc">
-            Tem dúvidas sobre o manejo de abelhas nativas sem ferrão, quer adquirir produtos artesanais ou agendar uma visita educativa? O atendimento via WhatsApp é o nosso canal principal e mais rápido.
+            Selecione os produtos sustentáveis de seu interesse ou fale diretamente com Gabriel Ulisses Barbosa pelo WhatsApp para tirar dúvidas e agendar visitas técnicas.
           </p>
+        </div>
+
+        <!-- Seletor de Encomendas & Kits Ecológicos -->
+        <div class="order-cockpit-card" style="margin-bottom: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem;">
+          <h3 style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 0.5rem;">
+            Monte sua Encomenda Sustentável
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            Escolha os itens desejados para gerar automaticamente sua mensagem personalizada de pedido:
+          </p>
+          <div class="order-items-grid">
+            <label class="order-item-checkbox">
+              <input type="checkbox" name="order_item" value="Mel Puro de Uruçu Nordestina (Pote 150g)">
+              <div class="order-item-box">
+                <strong>Mel de Uruçu Nordestina</strong>
+                <span>Pote 150g &bull; Acidez floral nobre</span>
+              </div>
+            </label>
+            <label class="order-item-checkbox">
+              <input type="checkbox" name="order_item" value="Mel Puro de Jataí (Pote 100g)">
+              <div class="order-item-box">
+                <strong>Mel de Jataí Tradicional</strong>
+                <span>Pote 100g &bull; Bioativo medicinal</span>
+              </div>
+            </label>
+            <label class="order-item-checkbox">
+              <input type="checkbox" name="order_item" value="Mel Encorpado de Mandaçaia (Pote 150g)">
+              <div class="order-item-box">
+                <strong>Mel de Mandaçaia</strong>
+                <span>Pote 150g &bull; Denso e gastronômico</span>
+              </div>
+            </label>
+            <label class="order-item-checkbox">
+              <input type="checkbox" name="order_item" value="Extrato Puro de Própolis de Abelhas Nativas">
+              <div class="order-item-box">
+                <strong>Extrato de Própolis ASF</strong>
+                <span>Frasco conta-gotas 30ml</span>
+              </div>
+            </label>
+            <label class="order-item-checkbox">
+              <input type="checkbox" name="order_item" value="Caixa Racional Módulo INPA para Iniciação">
+              <div class="order-item-box">
+                <strong>Caixa Racional Modelo INPA</strong>
+                <span>Módulo sustentável de madeira</span>
+              </div>
+            </label>
+            <label class="order-item-checkbox">
+              <input type="checkbox" name="order_item" value="Agendamento de Visita Técnica em Petecaba">
+              <div class="order-item-box">
+                <strong>Visita Ecológica Guiada</strong>
+                <span>Agendamento para grupos em Petecaba</span>
+              </div>
+            </label>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            <button type="button" id="btnEnviarEncomendaWhatsApp" class="btn btn-primary" style="padding: 12px 24px; font-weight: 700; font-size: 0.95rem;">
+              Enviar Pedido via WhatsApp &rarr;
+            </button>
+          </div>
         </div>
 
         <div class="whatsapp-contact-container">
           <div class="whatsapp-contact-card">
-            <div class="whatsapp-card-badge">🟢 Online para Mensagens</div>
+            <div class="whatsapp-card-badge">Online para Mensagens</div>
             <h3 class="whatsapp-card-title">Gabriel Ulisses Barbosa</h3>
-            <p class="whatsapp-card-subtitle">Meliponicultor & Proprietário</p>
+            <p class="whatsapp-card-subtitle">Meliponicultor &amp; Proprietário</p>
             <p class="whatsapp-card-desc">
-              Entre em contato direto para vendas de enxames, mel de abelhas nativas da Mata Atlântica (Uruçu, Mandaçaia e Jataí), caixas racionais sob medida e assessoria de manejo ecológico.
+              Atendimento direto para venda de enxames, mel de abelhas nativas da Mata Atlântica (Uruçu, Mandaçaia e Jataí), caixas racionais sob medida e assessoria de manejo ecológico.
             </p>
             <a href="https://wa.me/5571992724330?text=Vim%20pelo%20Site,%20queria%20mais%20informa%C3%A7%C3%B5es.." target="_blank" rel="noopener noreferrer" class="btn btn-primary whatsapp-btn-large" aria-label="Falar com Gabriel Ulisses no WhatsApp">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.573 1.453 5.361 1.454 5.378 0 9.754-4.373 9.757-9.754.002-2.607-1.012-5.059-2.859-6.908C17.06 2.1 14.604.992 12.002.992c-5.385 0-9.761 4.372-9.765 9.752-.001 1.905.5 3.755 1.455 5.368l-.953 3.486 3.568-.936zm10.743-7.07c-.29-.145-1.716-.848-1.982-.944-.266-.096-.46-.145-.652.145-.19.29-.74.944-.906 1.135-.167.19-.333.214-.623.069-.29-.145-1.224-.451-2.332-1.441-.862-.77-1.444-1.72-1.614-2.01-.17-.29-.018-.447.127-.592.13-.13.29-.338.435-.508.145-.17.193-.29.29-.483.097-.19.047-.36-.023-.506-.07-.145-.652-1.57-.894-2.15-.236-.57-.475-.49-.652-.499-.169-.008-.363-.01-.557-.01-.19 0-.502.072-.765.352-.263.28-1.006.985-1.006 2.402 0 1.417 1.031 2.784 1.176 2.977.145.19 2.029 3.1 4.916 4.35.687.297 1.222.474 1.64.607.69.22 1.319.19 1.815.116.552-.083 1.716-.7 1.958-1.378.243-.677.243-1.258.17-1.378-.072-.12-.266-.19-.556-.336z"/>
               </svg>
-              Iniciar Conversa no WhatsApp
+              Iniciar Conversa Direta
             </a>
           </div>
 

@@ -1,47 +1,56 @@
-name: Atualizar Galeria do Google Drive
+name: Sincronizar Galeria do Google Drive (Manual)
 
 on:
-  schedule:
-    # Executa a cada 6 horas (às 00:00, 06:00, 12:00 e 18:00 UTC)
-    - cron: '0 */6 * * *'
-  push:
-    branches:
-      - main
-  workflow_dispatch: # Permite execução manual pelo painel do GitHub Actions
+  workflow_dispatch:
+    inputs:
+      pasta_drive_id:
+        description: 'ID da Pasta do Google Drive (Padrao: info oficial)'
+        required: false
+        default: '1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r'
+        type: string
+      forcar_recriacao:
+        description: 'Forcar recriacao completa do arquivo galeria.json'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
-  contents: write # Dá permissão para fazer commit e push de volta no repositório
+  contents: write
 
 jobs:
-  atualizar:
+  sincronizar:
+    name: Sincronizacao Manual de Midias
     runs-on: ubuntu-latest
 
     steps:
-    - name: Código Checkout
+    - name: Checkout do Repositorio
       uses: actions/checkout@v4
 
     - name: Configurar Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
-    - name: Instalar Dependências
+    - name: Instalar Dependencias
       run: |
         python -m pip install --upgrade pip
         pip install requests
 
-    - name: Executar Script de Atualização
-      run: python atualizar_galeria.py
+    - name: Executar Script de Atualizacao
+      env:
+        DRIVE_FOLDER_ID: ${{ inputs.pasta_drive_id }}
+      run: |
+        python atualizar_galeria.py --folder-id "${DRIVE_FOLDER_ID:-1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r}"
 
-    - name: Commit e Push das alterações
+    - name: Commit e Push das alteracoes
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add galeria.json
         if git diff --cached --quiet; then
-          echo "Nenhuma alteração no galeria.json detectada."
+          echo "Nenhuma alteracao no galeria.json detectada."
         else
-          git commit -m "chore: atualiza galeria.json com mídias do Google Drive [skip ci]"
+          git commit -m "chore: sincronizacao manual de midias do Google Drive [skip ci]"
           git pull --rebase origin main
           git push origin main
         fi
