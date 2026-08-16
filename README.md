@@ -40,6 +40,14 @@ Meliponário Abelha Rainha/
 
 ## Log de Atualizações (Changelog)
 
+### 16/08/2026 - Módulo 12: Responsividade Mobile Fluida de Vídeos, Inclusão de Vídeo Inicial e Padronização Nominal
+- **Padronização Nominal do Proprietário**:
+  * Atualizado universalmente em todo o portal, metatags SEO, JavaScript, CSS e documentação o nome completo oficial: **Gabriel Ulisses de Queiroz Barbosa**.
+- **Página Inicial (`index.html`)**:
+  * Integrado o vídeo oficial com ID `1N23fqdbP6k78MvyHdSY7pOfsANpvLoiZ` ao mosaico da galeria inicial ao lado da tríade de fotos (`1E0nlV7fM9MUePhsFxHDAAmHen5FC_SHl`, `1qktFwlJ6QI9Ie_NM1zAEBONkYCsV8K-5` e `1yiDHefHAj8qD2J-YYasvVF4lkcPVywi4`).
+- **Engenharia de Responsividade Mobile (`style.css`)**:
+  * Implementada a regra fluida `aspect-ratio: 16 / 9` em `.video-wrapper` com limites de altura mínima e media queries adaptadas para dispositivos móveis (`max-width: 768px` e `max-width: 480px`), eliminando telas pretas e garantindo ajuste proporcional à resolução do navegador mobile.
+
 ### 16/08/2026 - Módulo 11: Saneamento Visual Definitivo de Vídeos, Eliminação de Duplicidades e Padronização da Imagem Coringa
 - **Página Inicial (`index.html`) e JavaScript (`script.js`)**:
   * Mapeada a tríade exata de fotografias da galeria inicial através dos links oficiais do Google Drive informados pelo usuário (`1E0nlV7fM9MUePhsFxHDAAmHen5FC_SHl`, `1qktFwlJ6QI9Ie_NM1zAEBONkYCsV8K-5` e `1yiDHefHAj8qD2J-YYasvVF4lkcPVywi4`), preservando o acervo multimídia completo exclusivamente em `galeria.html`.
@@ -98,14 +106,14 @@ Meliponário Abelha Rainha/
 - **Refatoração com Argparse (`atualizar_galeria.py`)**: Script Python atualizado para processar parâmetros via linha de comando e variáveis de ambiente com suporte a UTF-8 puro.
 
 ### 16/08/2026 - Módulo 5: Arquitetura Multi-Páginas (MPA) e Integração do Acervo Multimídia
-- **Página Nossa História (`historia.html`)**: Narrativa biográfica completa de Gabriel Ulisses Barbosa, a homenagem pioneira a Fábio Barbosa (incentivador de 2018), as 2 primeiras caixas e a expansão para mais de 200 colônias, integrando os vídeos `info/O espaço.mp4` e `info/Curso de formação de novos criadores.mp4`.
+- **Página Nossa História (`historia.html`)**: Narrativa biográfica completa de Gabriel Ulisses de Queiroz Barbosa, a homenagem pioneira a Fábio Barbosa (incentivador de 2018), as 2 primeiras caixas e a expansão para mais de 200 colônias, integrando os vídeos `info/O espaço.mp4` e `info/Curso de formação de novos criadores.mp4`.
 - **Página Nossas Abelhas (`abelhas.html`)**: Catálogo detalhado das espécies Uruçu Nordestina (*Melipona scutellaris*), Jataí (*Tetragonisca angustula*) e Mandaçaia (*Melipona quadrifasciata*), com os vídeos `info/uruçu na flor de melaleuca.mp4` e `info/Mandaçaia.mp4`.
 - **Página Manufatura e Cutelaria (`manufatura.html`)**: A oficina de Luis Sergio, transformando madeiras nobres de demolição (Cumaru, Pau-d'Arco, Pau-Rosa, Angelim) em caixas racionais térmicas e cercas do sítio, além de facas artesanais forjadas à mão (`info/Luis Sergio - facas artesanais.mp4`, `info/Luis Sergio - facas artesanais 02.mp4` e `info/Momento descontração - Removedor de casca de coco, criação de metalurgia de Luis Sergio.mp4`).
 - **Página Galeria Multimídia (`galeria.html`)**: Mural interativo completo com fotos em alta definição e players integrados para todos os vídeos da pasta `info/`.
 - **Navegação Global e SEO**: Atualizados `index.html`, `style.css` e `sitemap.xml` garantindo conformidade com WCAG 2.1 AAA.
 
 ### 15/08/2026 - Módulo 4: Cockpit de Encomendas no WhatsApp e Síntese de Voz Web Speech API
-- **Cockpit de Encomendas Sustentáveis**: Implementado seletor interativo de produtos artesanais (Méis puros de Uruçu/Jataí/Mandaçaia, Extrato de Própolis ASF, Caixas INPA e Visitas Ecológicas) com montagem e disparo automático de mensagem formatada para o WhatsApp de Gabriel Ulisses Barbosa (`71 99272-4330`).
+- **Cockpit de Encomendas Sustentáveis**: Implementado seletor interativo de produtos artesanais (Méis puros de Uruçu/Jataí/Mandaçaia, Extrato de Própolis ASF, Caixas INPA e Visitas Ecológicas) com montagem e disparo automático de mensagem formatada para o WhatsApp de Gabriel Ulisses de Queiroz Barbosa (`71 99272-4330`).
 - **Leitor de Voz Nativo (Web Speech API)**: Integrados botões "Ouvir Espécie" nos cards da Uruçu, Mandaçaia e Jataí utilizando a API nativa do navegador para leitura em áudio pt-BR.
 - **Acessibilidade Universal**: Adicionados estilos responsivos e suporte completo ao modo de Alto Contraste AAA para o Cockpit de Encomendas.
 
@@ -150,7 +158,7 @@ Meliponário Abelha Rainha/
 - 🌐 **Domínio Personalizado (Registro.br & GitHub Pages)**: Criado o arquivo `CNAME` na raiz para apontar o domínio `meliponario-abelha-rainha.com.br` e revisada toda a estrutura de caminhos relativos de mídias para compatibilidade imediata.
 - ✍️ **Citação Senhor Ulisses**: Criado um banner decorativo de citação (`.quote-banner`) com gradiente e trama de colmeia no fluxo da página, contendo a citação tradicional do Sr. Ulisses sobre o dever ecológico do plantio.
 - 🖼️ **Galeria & Lightbox**: Integrado o vídeo de manejo na galeria com indicador visual de play. Adicionado suporte a carrossel (botões anterior/próximo e navegação por teclado com setas esquerda/direita) e reprodução de vídeo nativo no lightbox.
-- 🐝 **Abelhas Sem Ferrão (ASF)**: Implementado modal de detalhes para as espécies (Uruçu, Mandaçaia e Jataí) contendo informações biológicas estruturadas e botão de contato personalizado via WhatsApp direto para Gabriel Ulisses.
+- 🐝 **Abelhas Sem Ferrão (ASF)**: Implementado modal de detalhes para as espécies (Uruçu, Mandaçaia e Jataí) contendo informações biológicas estruturadas e botão de contato personalizado via WhatsApp direto para Gabriel Ulisses de Queiroz Barbosa.
 - 🔤 **Revisão Ortográfica & Acessibilidade**: Corrigido o termo "active" para "ativa" (card Jataí), capitalizada a grafia de "Mata Atlântica" e garantida a acessibilidade de foco e alto contraste em todos os novos elementos.
 - 📱 **Validação de Grid & Sintaxe**: Auditada a integridade sintática e responsividade das colunas em smartphones, tablets e desktops (evitando sobreposições ou quebras).
 - 📞 **Canais de Contato & WhatsApp**: Removido o e-mail de contato inexistente do painel e atualizados todos os links de WhatsApp (no formulário de atendimento, modais de espécies e no botão flutuante) para o número ativo de Ulisses (`71 99272-4330`) com a mensagem pré-escrita: *"Vim pelo Site, queria mais informações.."*.
@@ -162,7 +170,7 @@ Meliponário Abelha Rainha/
 
 ### 📅 16/07/2026 - Ajuste de Marca e Assinatura
 - 🎨 **Cores / Branding**: Removida a paleta de cores institucional do IF Baiano e implementada a paleta própria do Meliponário Abelha Rainha (mel, própolis e terra).
-- 🧑‍🌾 **Conteúdo**: Adicionado Gabriel Ulisses Barbosa como o proprietário oficial do meliponário.
+- 🧑‍🌾 **Conteúdo**: Adicionado Gabriel Ulisses de Queiroz Barbosa como o proprietário oficial do meliponário.
 - 🐕 **Mascote & Assinatura**: Adicionada a assinatura de desenvolvimento da YLuna85 LABs e a imagem/crédito da mascote Bolinho de Chuva no rodapé do site.
 
 ### 📅 16/07/2026 - Estruturação Inicial do Site

@@ -587,7 +587,7 @@ function inicializarModalEspecies() {
       comportamento: 'Extremamente dócil e mansa. Permite um manejo muito tranquilo, sendo excelente para meliponicultura educacional, preservação e meliponários escolares.',
       mel: 'O mel de Uruçu é levemente ácido, de coloração clara, consistência mais fluida e sabor fresco com deliciosas notas florais e cítricas. É mundialmente apreciado na gastronomia de alto padrão e muito utilizado na medicina tradicional.',
       produtividade: 'Alta. É uma excelente produtora de mel, podendo render de 2 a 4 litros por colmeia ao ano sob condições favoráveis em Petecaba.',
-      manejo: 'Gabriel Ulisses Barbosa realiza o manejo racional utilizando caixas modelo INPA de tamanhos adequados, facilitando a termorregulação do ninho e garantindo divisões sustentáveis das colônias em Candeias.'
+      manejo: 'Gabriel Ulisses de Queiroz Barbosa realiza o manejo racional utilizando caixas modelo INPA de tamanhos adequados, facilitando a termorregulação do ninho e garantindo divisões sustentáveis das colônias em Candeias.'
     },
     mandacaia: {
       nome: 'Mandaçaia',
@@ -611,7 +611,7 @@ function inicializarModalEspecies() {
       comportamento: 'Bastante ativa e rápida. Possui guardas dedicadas que voam ao redor para proteger a colmeia, mas sem causar qualquer dano.',
       mel: 'O mel de Jataí é amplamente conhecido por sua acidez marcante e sabor agridoce inconfundível. É um dos méis mais estudados no mundo devido às suas comprovadas propriedades antibacterianas, anti-inflamatórias e cicatrizantes.',
       produtividade: 'Média/Baixa devido ao seu tamanho corporal (cerca de 500g a 1,5 kg por ano), mas de altíssimo valor de mercado.',
-      manejo: 'Gabriel Ulisses Barbosa realiza divisões anuais de Jataí utilizando caixas modelo vertical de fácil manutenção. Suas colmeias em Petecaba ajudam na polinização de dezenas de árvores frutíferas e flores silvestres.'
+      manejo: 'Gabriel Ulisses de Queiroz Barbosa realiza divisões anuais de Jataí utilizando caixas modelo vertical de fácil manutenção. Suas colmeias em Petecaba ajudam na polinização de dezenas de árvores frutíferas e flores silvestres.'
     }
   };
 
