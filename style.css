@@ -2793,9 +2793,14 @@ body.high-contrast .btn-audio-species {
 
 .gallery-photo-card img {
   width: 100%;
-  height: 240px;
+  height: 280px;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-photo-card:hover img {
+  transform: scale(1.03);
 }
 
 .gallery-photo-info {

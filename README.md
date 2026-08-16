@@ -43,16 +43,19 @@ Meliponário Abelha Rainha/
 ### 16/08/2026 - Módulo 10: Reestruturação Científica de Abelhas, Remapeamento de História e Saneamento da Página Inicial
 - **Página Inicial (`index.html`)**:
   * Substituída a imagem no card de Jataí pelo logotipo oficial `LOGO.png`, eliminando a imagem trocada.
-  * Ajustada a grade de prévia da galeria inicial para 3 registros essenciais representativos do sítio com link direto para o acervo completo em `galeria.html`.
+  * Ajustada a grade da galeria inicial para exatamente 5 imagens fotográficas autênticas com overlay de zoom e botão de acesso direto ao acervo completo em `galeria.html`.
 - **Página Nossa História (`historia.html`)**:
   * `O Santuário das Abelhas Nativas`: Atualizado para `iframe` com ID `1X5n4clNCxGi0oDVr66qbdarkEmsWf6wh`.
   * `O Começo em 2018 (Homenagem a Fábio Barbosa)`: Atualizada a imagem de Fábio para a CDN oficial com ID `1pBT0QtIE9gu33_4EJKw0Jf8pAfTkNaiQ`.
   * `Educação Socioambiental (Capacitação de Meliponicultores)`: Atualizado o vídeo para o `iframe` oficial com ID `1ctt-bMcDcSqxJcyqtl_n6zNUsL8UKokg`.
-  * Cards de Navegação: Substituída a imagem do card de `Manufatura e Cutelaria` pela logo `LOGO.png`.
 - **Página Nossas Abelhas (`abelhas.html`)**:
   * Removidas todas as fotos e reprodutores de vídeo.
   * Conteúdo integralmente reestruturado em blocos de design editorial/científico com foco em biologia da colônia, acomodação térmica, arquitetura de ninho, polinização especializada e método de extração a frio do mel.
   * Cards de rodapé padronizados com o logotipo `LOGO.png`.
+- **Página Galeria Multimídia (`galeria.html`)**:
+  * Removidos todos os blocos de texto/legendas das molduras de fotografias (`.gallery-photo-info`), convertendo a seção em um mosaico visual limpo e fiel ao registro imagético sem divergências de identificação.
+  * Ajustada a altura e efeito de transição suave nas fotos (`height: 280px` com zoom progressivo no hover) em `style.css`.
+  * Padronizado o termo "Oficina de Luis Sergio" nos cards de navegação.
 
 ### 16/08/2026 - Módulo 9: Diagnóstico e Correção de Streaming de Vídeos com Iframes e Remapeamento Factual
 - **Diagnóstico Técnico de Reprodução de Vídeo**: Identificada a causa da não reprodução de vídeos nas tags `<video>` (ausência de suporte do Google Drive a requisições de intervalo *HTTP 206 Partial Content* e *Byte-Range Requests*).
@@ -62,7 +65,7 @@ Meliponário Abelha Rainha/
   * `Ergonomia e Resistência Campesina`: Atualizado para ID `1fiQKxpspzuKa6CwVx0HmAyU27Sehc4z6`.
   * `Reciclagem PET: Mudas em Garrafas PET`: Atualizado para ID `1IEeZU8czUFTiMC5qykIhrxWZYCj451pY`.
   * `Viveiro Melípona: Produção de Mudas Nativas`: Atualizado para ID `1_9Ierko25xjMDhnJsIfq0Y9x6OMhCAaA`.
-  * `Invento de Luís Sérgio: Descascador de Coco em Aço`: Atualizado para ID `1dKMaEvIhN4A3RxZ1OHkrU-v-e-myX193`.
+  * `Invento de Luis Sergio: Descascador de Coco em Aço`: Atualizado para ID `1dKMaEvIhN4A3RxZ1OHkrU-v-e-myX193`.
 - **Saneamento e Acessibilidade**: Removidos links residuais de brindes nos rodapés de todas as páginas e padronizada a pontuação formal e a acentuação em pt-BR.
 
 ### 16/08/2026 - Módulo 8: Refinamento Estrutural, Proteção de Imagens e Foco Institucional
@@ -86,7 +89,7 @@ Meliponário Abelha Rainha/
 ### 16/08/2026 - Módulo 5: Arquitetura Multi-Páginas (MPA) e Integração do Acervo Multimídia
 - **Página Nossa História (`historia.html`)**: Narrativa biográfica completa de Gabriel Ulisses Barbosa, a homenagem pioneira a Fábio Barbosa (incentivador de 2018), as 2 primeiras caixas e a expansão para mais de 200 colônias, integrando os vídeos `info/O espaço.mp4` e `info/Curso de formação de novos criadores.mp4`.
 - **Página Nossas Abelhas (`abelhas.html`)**: Catálogo detalhado das espécies Uruçu Nordestina (*Melipona scutellaris*), Jataí (*Tetragonisca angustula*) e Mandaçaia (*Melipona quadrifasciata*), com os vídeos `info/uruçu na flor de melaleuca.mp4` e `info/Mandaçaia.mp4`.
-- **Página Manufatura e Cutelaria (`manufatura.html`)**: A oficina de Luís Sérgio, transformando madeiras nobres de demolição (Cumaru, Pau-d'Arco, Pau-Rosa, Angelim) em caixas racionais térmicas e cercas do sítio, além de facas artesanais forjadas à mão (`info/Luis Sergio - facas artesanais.mp4`, `info/Luis Sergio - facas artesanais 02.mp4` e `info/Momento descontração - Removedor de casca de coco, criação de metalurgia de Luis Sergio.mp4`).
+- **Página Manufatura e Cutelaria (`manufatura.html`)**: A oficina de Luis Sergio, transformando madeiras nobres de demolição (Cumaru, Pau-d'Arco, Pau-Rosa, Angelim) em caixas racionais térmicas e cercas do sítio, além de facas artesanais forjadas à mão (`info/Luis Sergio - facas artesanais.mp4`, `info/Luis Sergio - facas artesanais 02.mp4` e `info/Momento descontração - Removedor de casca de coco, criação de metalurgia de Luis Sergio.mp4`).
 - **Página Galeria Multimídia (`galeria.html`)**: Mural interativo completo com fotos em alta definição e players integrados para todos os vídeos da pasta `info/`.
 - **Navegação Global e SEO**: Atualizados `index.html`, `style.css` e `sitemap.xml` garantindo conformidade com WCAG 2.1 AAA.
 

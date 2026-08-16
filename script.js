@@ -322,7 +322,7 @@ function renderizarGaleriaDinamica(itens) {
       // Overlay sutil de zoom/hover caso não tenha textos explicativos
       innerHTML += `
         <div class="gallery-overlay gallery-overlay-empty">
-          <div class="gallery-zoom-icon" aria-hidden="true">🔍</div>
+          <div class="gallery-zoom-icon" aria-hidden="true">+</div>
         </div>
       `;
     }
@@ -337,7 +337,7 @@ function renderizarGaleriaDinamica(itens) {
 }
 
 /**
- * 🏷️ INICIALIZAÇÃO DOS FILTROS DA GALERIA
+ * INICIALIZAÇÃO DOS FILTROS DA GALERIA
  */
 function inicializarFiltros(categorias) {
   const filterContainer = document.querySelector('.gallery-filters');
@@ -391,7 +391,7 @@ function inicializarFiltros(categorias) {
 }
 
 /**
- * 🖼️ 4. GALERIA LIGHTBOX (VISUALIZADOR DE FOTOS COM SUPORTE A FILTROS)
+ * 4. GALERIA LIGHTBOX (VISUALIZADOR DE FOTOS COM SUPORTE A FILTROS)
  */
 function inicializarGaleriaLightbox() {
   const galleryItems = document.querySelectorAll('.gallery-item');
