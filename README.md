@@ -41,15 +41,15 @@ Meliponário Abelha Rainha/
 ## Log de Atualizações (Changelog)
 
 ### 16/08/2026 - Módulo 11: Saneamento Visual Definitivo de Vídeos, Eliminação de Duplicidades e Padronização da Imagem Coringa
+- **Página Inicial (`index.html`) e JavaScript (`script.js`)**:
+  * Mapeada a tríade exata de fotografias da galeria inicial através dos links oficiais do Google Drive informados pelo usuário (`1E0nlV7fM9MUePhsFxHDAAmHen5FC_SHl`, `1qktFwlJ6QI9Ie_NM1zAEBONkYCsV8K-5` e `1yiDHefHAj8qD2J-YYasvVF4lkcPVywi4`), preservando o acervo multimídia completo exclusivamente em `galeria.html`.
+  * Corrigida a configuração `CONFIG_GALERIA.origem` para `'local'` em `script.js`, garantindo que o JavaScript não sobrescreva a grade com `galeria.json`.
 - **Página Galeria Multimídia (`galeria.html`)**:
   * Removidos integralmente todos os 12 blocos de legendas/captions de vídeos (`.video-caption-box`), mantendo a reprodução de streaming em molduras responsivas limpas e fluidas.
-  * Auditado o mural de fotografias para eliminar imagens repetidas, adotando a marca oficial `LOGO.png` no 6º cartão.
-  * Padronizada a logo `LOGO.png` como imagem coringa institucional no cartão "Nossa História" da seção de navegação entre páginas.
+  * Auditado o mural de fotografias para eliminar qualquer foto repetida de Fábio, apresentando 4 cartões distintos (Uruçu, Mel Puro, Citação e Marca Oficial `LOGO.png`).
+  * Padronizada a logo `LOGO.png` como imagem coringa institucional nos cartões de navegação.
 - **Página Manufatura e Cutelaria (`manufatura.html`)**:
   * Padronizada a logo `LOGO.png` no cartão de navegação para "Nossa História".
-- **Página Inicial (`index.html`) e JavaScript (`script.js`)**:
-  * Corrigida a configuração `CONFIG_GALERIA.origem` de `'json'` para `'local'` em `script.js`, impedindo que o script sobrescrevesse a grade estática do HTML com todas as mídias de `galeria.json`.
-  * Fixada permanentemente a exibição de rigorosamente 5 fotos autênticas com botão para `galeria.html`.
 
 ### 16/08/2026 - Módulo 10: Reestruturação Científica de Abelhas, Remapeamento de História e Saneamento da Página Inicial
 - **Página Inicial (`index.html`)**:
