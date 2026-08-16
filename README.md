@@ -40,6 +40,16 @@ Meliponário Abelha Rainha/
 
 ## Log de Atualizações (Changelog)
 
+### 16/08/2026 - Módulo 11: Saneamento Visual Definitivo de Vídeos, Eliminação de Duplicidades e Padronização da Imagem Coringa
+- **Página Galeria Multimídia (`galeria.html`)**:
+  * Removidos integralmente todos os 12 blocos de legendas/captions de vídeos (`.video-caption-box`), mantendo a reprodução de streaming em molduras responsivas limpas e fluidas.
+  * Auditado o mural de fotografias para eliminar imagens repetidas, adotando a marca oficial `LOGO.png` no 6º cartão.
+  * Padronizada a logo `LOGO.png` como imagem coringa institucional no cartão "Nossa História" da seção de navegação entre páginas.
+- **Página Manufatura e Cutelaria (`manufatura.html`)**:
+  * Padronizada a logo `LOGO.png` no cartão de navegação para "Nossa História".
+- **Página Inicial (`index.html`)**:
+  * Consolidada a galeria inicial com exatamente 5 imagens fotográficas autênticas e botão de acesso direto para `galeria.html`.
+
 ### 16/08/2026 - Módulo 10: Reestruturação Científica de Abelhas, Remapeamento de História e Saneamento da Página Inicial
 - **Página Inicial (`index.html`)**:
   * Substituída a imagem no card de Jataí pelo logotipo oficial `LOGO.png`, eliminando a imagem trocada.
