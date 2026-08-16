@@ -40,13 +40,29 @@ Meliponário Abelha Rainha/
 
 ## Log de Atualizações (Changelog)
 
+### 16/08/2026 - Módulo 10: Reestruturação Científica de Abelhas, Remapeamento de História e Saneamento da Página Inicial
+- **Página Inicial (`index.html`)**:
+  * Substituída a imagem no card de Jataí pelo logotipo oficial `LOGO.png`, eliminando a imagem trocada.
+  * Ajustada a grade de prévia da galeria inicial para 3 registros essenciais representativos do sítio com link direto para o acervo completo em `galeria.html`.
+- **Página Nossa História (`historia.html`)**:
+  * `O Santuário das Abelhas Nativas`: Atualizado para `iframe` com ID `1X5n4clNCxGi0oDVr66qbdarkEmsWf6wh`.
+  * `O Começo em 2018 (Homenagem a Fábio Barbosa)`: Atualizada a imagem de Fábio para a CDN oficial com ID `1BHCTEiyAi05cRWSLnnUpyt4Xraeqz38E`.
+  * `Educação Socioambiental (Capacitação de Meliponicultores)`: Atualizado o vídeo para o `iframe` oficial com ID `1ctt-bMcDcSqxJcyqtl_n6zNUsL8UKokg`.
+  * Cards de Navegação: Substituída a imagem do card de `Manufatura e Cutelaria` pela logo `LOGO.png`.
+- **Página Nossas Abelhas (`abelhas.html`)**:
+  * Removidas todas as fotos e reprodutores de vídeo.
+  * Conteúdo integralmente reestruturado em blocos de design editorial/científico com foco em biologia da colônia, acomodação térmica, arquitetura de ninho, polinização especializada e método de extração a frio do mel.
+  * Cards de rodapé padronizados com o logotipo `LOGO.png`.
+
 ### 16/08/2026 - Módulo 9: Diagnóstico e Correção de Streaming de Vídeos com Iframes e Remapeamento Factual
 - **Diagnóstico Técnico de Reprodução de Vídeo**: Identificada a causa da não reprodução de vídeos nas tags `<video>` (ausência de suporte do Google Drive a requisições de intervalo *HTTP 206 Partial Content* e *Byte-Range Requests*).
 - **Substituição por Iframes de Streaming Oficial**: Atualizados todos os blocos de vídeo de `manufatura.html`, `historia.html`, `abelhas.html` e `galeria.html` para contêineres responsivos `.video-wrapper` alimentados por `<iframe>` com `https://drive.google.com/file/d/[ID]/preview`, utilizando o player oficial do Google Drive com transcodificação e streaming contínuo.
-- **Correção Factual de Cruzamento de Mídias**:
-  * Em `manufatura.html`: Substituída a foto de Fábio pelo vídeo correto de reciclagem PET (`1O5DwgZ-bfRsx-JAwJ1bV6t2SagNSdDCE`), o vídeo indevido de Uruçu pelo vídeo oficial de criação de mudas (`14KM6HhVS7X09Qr2J4Q_ljQbFEc-XpVMr`) e o vídeo de casinhas pelo vídeo demonstrativo do invento descascador de coco de Luís Sérgio (`1zbpvTqXPQ4V8EEfYikC8wHHynSvOtXOf`).
-  * Em `galeria.html`: Remapeados e validados todos os 12 vídeos do catálogo com seus títulos e IDs oficiais.
-  * Em `historia.html` e `abelhas.html`: Atualizados os vídeos de história e espécies para reprodução nativa por `iframe`.
+- **Remapeamento Exato dos Vídeos de Manufatura**:
+  * `Construção com Cumaru de Demolição`: Atualizado para ID `1ueqQZO3jolupJ6MWXLJvnFzUvTlGoBQm`.
+  * `Ergonomia e Resistência Campesina`: Atualizado para ID `1fiQKxpspzuKa6CwVx0HmAyU27Sehc4z6`.
+  * `Reciclagem PET: Mudas em Garrafas PET`: Atualizado para ID `1IEeZU8czUFTiMC5qykIhrxWZYCj451pY`.
+  * `Viveiro Melípona: Produção de Mudas Nativas`: Atualizado para ID `1_9Ierko25xjMDhnJsIfq0Y9x6OMhCAaA`.
+  * `Invento de Luís Sérgio: Descascador de Coco em Aço`: Atualizado para ID `1dKMaEvIhN4A3RxZ1OHkrU-v-e-myX193`.
 - **Saneamento e Acessibilidade**: Removidos links residuais de brindes nos rodapés de todas as páginas e padronizada a pontuação formal e a acentuação em pt-BR.
 
 ### 16/08/2026 - Módulo 8: Refinamento Estrutural, Proteção de Imagens e Foco Institucional
