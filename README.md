@@ -38,7 +38,20 @@ Meliponário Abelha Rainha/
 
 ---
 
-## 📜 Log de Atualizações (Changelog)
+## Log de Atualizações (Changelog)
+
+### 16/08/2026 - Módulo 8: Refinamento Estrutural, Proteção de Imagens e Foco Institucional
+- **Remoção do Hero Bento Grid**: Excluído o painel de quatro cards de estatísticas no banner inicial de `index.html` e descontinuada a rotina de animação de números associada em `script.js`.
+- **Padronização Visual das Espécies**: Aplicadas as imagens oficiais em alta definição via CDN Google Drive para Uruçu Nordestina e Jataí, e o logotipo oficial `LOGO.png` para a Mandaçaia nos cards e no modal biológico interativo.
+- **Remoção de Links Externos do Drive**: Removidos os botões direcionadores para pastas do Google Drive em `index.html` e `galeria.html`, centralizando a visualização de mídias nativamente dentro do portal.
+- **Proteção do Acervo Visual contra Download**: Implementadas regras de bloqueio de arrasto de imagens no CSS (`user-drag: none; user-select: none;`) e bloqueio de menu de contexto (`contextmenu`) no JavaScript.
+- **Desindexação da Página de Brindes**: Removidos os links de `brindes.html` nos menus de navegação de todas as páginas e do `sitemap.xml`, mantendo o arquivo no repositório para implementações futuras.
+- **Readequação do Atendimento**: Removido o simulador de encomendas e ajustada a seção de contato para foco em atendimento direto, dúvidas biológicas, agendamento de visitas ecológicas em Petecaba e cursos de manejo.
+
+### 16/08/2026 - Módulo 7: Resolução Definitiva de Carregamento de Mídias via CDN Google Drive
+- **Mapeamento Automatizado de IDs**: Extração direta dos identificadores exclusivos de todos os 20 arquivos da pasta pública do Google Drive (`1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r`).
+- **Carregamento Direto por CDN Global**: Atualizados os atributos `src` e `poster` de `historia.html`, `abelhas.html`, `manufatura.html`, `galeria.html` e `index.html` para as URLs de alta velocidade do Google (`https://lh3.googleusercontent.com/d/[ID]`), garantindo exibição instantânea das fotos e vídeos em qualquer ambiente de hospedagem.
+- **Engine de Resiliência em `script.js`**: Implementada a função `inicializarResilienciaMidias()` que monitora falhas de carregamento e chaveia dinamicamente entre a CDN do Google Drive e arquivos locais.
 
 ### 📅 16/08/2026 - Módulo 6: Motor de Sincronização de Mídias em Regime Estritamente Manual
 - **Workflow Manual Parametrizado (`.github/workflows/atualizar_galeria.yml`)**: Desativados todos os agendamentos automáticos por cron e gatilhos de push. A sincronização de imagens e vídeos do Google Drive passou a ser acionada exclusivamente sob demanda via `workflow_dispatch`.

@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarMapa();
   carregarGaleria(); // Inicializa e carrega a galeria de fotos/vídeos
   inicializarModalEspecies();
-  inicializarHeroBento();
-  inicializarCockpitEncomendas();
   inicializarAudioEspecies();
+  inicializarResilienciaMidias();
+  inicializarProtecaoMidias();
 });
 
 /**
@@ -580,7 +580,7 @@ function inicializarModalEspecies() {
     urucu: {
       nome: 'Uruçu Nordestina',
       cientifico: 'Melipona scutellaris',
-      foto: 'WhatsApp Image 2026-07-12 at 15.54.01.jpeg',
+      foto: 'https://lh3.googleusercontent.com/d/1aOlGfXfHfnyVLHJ-60RQpPvImpzk1aWx',
       tag: 'Nativa da Mata Atlântica',
       descricao: 'Uma das abelhas sem ferrão mais emblemáticas e queridas do Nordeste brasileiro. Destaca-se pelo seu tamanho robusto, corpo escuro e pelos acinzentados no tórax. Seu nome deriva do tupi "uru-çú", que significa "abelha grande".',
       bioma: 'Mata Atlântica (Regiões úmidas do litoral nordestino)',
@@ -592,7 +592,7 @@ function inicializarModalEspecies() {
     mandacaia: {
       nome: 'Mandaçaia',
       cientifico: 'Melipona quadrifasciata',
-      foto: 'WhatsApp Image 2026-07-12 at 15.53.49.jpeg',
+      foto: 'LOGO.png',
       tag: 'Conservação e Beleza',
       descricao: 'Abelha de médio porte de cor escura com quatro faixas amarelas brilhantes e interrompidas sobre o abdômen. O nome indígena "Mandaçaia" significa "vigia bonita", devido ao curioso hábito de uma abelha sentinela ficar de guarda na entrada estreita da colmeia.',
       bioma: 'Mata Atlântica, florestas de transição e fragmentos do interior da Bahia',
@@ -604,7 +604,7 @@ function inicializarModalEspecies() {
     jatai: {
       nome: 'Jataí',
       cientifico: 'Tetragonisca angustula',
-      foto: 'WhatsApp Image 2026-07-12 at 15.57.24.jpeg',
+      foto: 'https://lh3.googleusercontent.com/d/1BHCTEiyAi05cRWSLnnUpyt4Xraeqz38E',
       tag: 'Pequena Guardiã',
       descricao: 'Uma abelha pequena (cerca de 4 a 5 mm), com cor dourada reluzente e olhos esverdeados. É extremamente comum e adaptável, podendo ser criada tanto em zonas rurais quanto em áreas urbanas. Constrói uma entrada típica em forma de canudinho de cera clara.',
       bioma: 'Ampla distribuição em todo o Brasil (Mata Atlântica, Cerrado, etc.)',
@@ -624,7 +624,7 @@ function inicializarModalEspecies() {
     container.innerHTML = `
       <div class="species-modal-grid">
         <div class="species-modal-image-wrapper">
-          <img src="${encodeURIComponent(dados.foto)}" alt="${dados.nome} em detalhe" class="species-modal-img">
+          <img src="${dados.foto}" alt="${dados.nome} em detalhe" class="species-modal-img" style="${dados.foto.endsWith('.png') ? 'object-fit: contain; padding: 20px; background: var(--bg-surface);' : ''}">
           <span class="species-modal-badge">${dados.tag}</span>
         </div>
         <div class="species-modal-info">
@@ -658,11 +658,11 @@ function inicializarModalEspecies() {
           </div>
           
           <div class="species-modal-actions">
-            <a href="https://wa.me/5571992724330?text=Ol%C3%A1%20Gabriel!%20Gostaria%20de%20saber%20mais%20sobre%20a%20abelha%20${encodeURIComponent(dados.nome)}%20e%20a%20disponibilidade%20de%20mel%20ou%20enxames." 
+            <a href="https://wa.me/5571992724330?text=Ol%C3%A1%20Gabriel!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20o%20manejo%20da%20abelha%20${encodeURIComponent(dados.nome)}%20em%20Petecaba." 
                target="_blank" 
                rel="noopener noreferrer" 
                class="btn btn-primary species-whatsapp-btn">
-              Solicitar Mel ou Enxame de ${dados.nome}
+              Tirar Dúvidas sobre ${dados.nome} no WhatsApp
             </a>
           </div>
         </div>
@@ -705,80 +705,7 @@ function inicializarModalEspecies() {
 }
 
 /**
- * 🌿 6. ANIMAÇÃO DE NÚMEROS DO HERO BENTO GRID (MÓDULO 1)
- */
-function inicializarHeroBento() {
-  const cards = document.querySelectorAll('.bento-stat-card [data-target]');
-  if (!cards.length) return;
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'), 10);
-        if (isNaN(target)) return;
-
-        let start = 0;
-        const duration = 1200;
-        const startTime = performance.now();
-        const prefix = target > 100 ? '+' : '';
-        const suffix = target === 100 ? '%' : '';
-
-        function animateNumber(now) {
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          // Easing suave (easeOutCubic)
-          const easeProgress = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(easeProgress * target);
-
-          el.textContent = `${prefix}${current.toLocaleString('pt-BR')}${suffix}`;
-
-          if (progress < 1) {
-            requestAnimationFrame(animateNumber);
-          } else {
-            el.textContent = `${prefix}${target.toLocaleString('pt-BR')}${suffix}`;
-          }
-        }
-
-        requestAnimationFrame(animateNumber);
-        obs.unobserve(el);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  cards.forEach(card => observer.observe(card));
-}
-
-/**
- * 📦 7. COCKPIT DE ENCOMENDAS NO WHATSAPP (MÓDULO 4)
- */
-function inicializarCockpitEncomendas() {
-  const btnEnviar = document.getElementById('btnEnviarEncomendaWhatsApp');
-  if (!btnEnviar) return;
-
-  btnEnviar.addEventListener('click', () => {
-    const checkboxes = document.querySelectorAll('input[name="order_item"]:checked');
-    const itensSelecionados = Array.from(checkboxes).map(cb => cb.value);
-
-    let mensagem = 'Olá, Gabriel Ulisses! Vim pelo site do Meliponário Abelha Rainha.';
-
-    if (itensSelecionados.length > 0) {
-      mensagem += '\n\nGostaria de solicitar informações e encomendar os seguintes itens sustentáveis:';
-      itensSelecionados.forEach((item, index) => {
-        mensagem += `\n${index + 1}. ${item}`;
-      });
-      mensagem += '\n\nPoderia me informar a disponibilidade, prazos e formas de entrega para a minha região?';
-    } else {
-      mensagem += '\n\nGostaria de saber mais sobre as abelhas nativas sem ferrão e produtos disponíveis em Petecaba.';
-    }
-
-    const whatsappUrl = `https://wa.me/5571992724330?text=${encodeURIComponent(mensagem)}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-  });
-}
-
-/**
- * 🔊 8. LEITOR DE VOZ NATIVO PARA ESPÉCIES (WEB SPEECH API - MÓDULO 4)
+ * 🔊 7. LEITOR DE VOZ NATIVO PARA ESPÉCIES (WEB SPEECH API)
  */
 function inicializarAudioEspecies() {
   const botoesAudio = document.querySelectorAll('.btn-audio-species');
@@ -825,5 +752,53 @@ function inicializarAudioEspecies() {
     });
   });
 }
+
+/**
+ * 🖼️ 10. RESILIÊNCIA E FALLBACK AUTOMÁTICO DE IMAGENS E VÍDEOS (GOOGLE DRIVE & LOCAL)
+ */
+function inicializarResilienciaMidias() {
+  const mapaMidiasDrive = {
+    "Fábio, irmão de Ulisses, o grande incetivador.jpg": "1ctt-bMcDcSqxJcyqtl_n6zNUsL8UKokg",
+    "citação de ulises.jpeg": "1KdBq-ACySp3ctLI2W64xiih-ny8tGuRX",
+    "uruçu nordestina.jpg": "1aOlGfXfHfnyVLHJ-60RQpPvImpzk1aWx",
+    "jataí.jpg": "1BHCTEiyAi05cRWSLnnUpyt4Xraeqz38E",
+    "Mel de Uruçu Nordestina.jpeg": "1ueqQZO3jolupJ6MWXLJvnFzUvTlGoBQm",
+    "WhatsApp Image 2026-07-12 at 15.53.49.jpeg": "1aOlGfXfHfnyVLHJ-60RQpPvImpzk1aWx"
+  };
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+      const srcAtual = this.getAttribute('src') || '';
+      const fallbackLocal = this.getAttribute('data-fallback');
+      
+      // Se falhou o CDN e temos fallback local
+      if (srcAtual.startsWith('https://lh3.googleusercontent.com') && fallbackLocal) {
+        this.src = fallbackLocal;
+        return;
+      }
+      
+      // Se falhou o local e temos no mapa de IDs
+      for (const [nomeArquivo, idDrive] of Object.entries(mapaMidiasDrive)) {
+        if (srcAtual.includes(encodeURIComponent(nomeArquivo)) || srcAtual.includes(nomeArquivo)) {
+          this.src = `https://lh3.googleusercontent.com/d/${idDrive}`;
+          break;
+        }
+      }
+    });
+  });
+}
+
+/**
+ * 🛡️ 11. PROTEÇÃO DE IMAGENS E VÍDEOS CONTRA DOWNLOAD DIRETO
+ */
+function inicializarProtecaoMidias() {
+  document.addEventListener('contextmenu', (e) => {
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO' || e.target.closest('.gallery-item') || e.target.closest('.photo-frame')) {
+      e.preventDefault();
+    }
+  });
+}
+
+
 
 
