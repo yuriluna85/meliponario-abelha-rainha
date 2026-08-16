@@ -44,9 +44,10 @@ Meliponário Abelha Rainha/
 - **Padronização Nominal do Proprietário**:
   * Atualizado universalmente em todo o portal, metatags SEO, JavaScript, CSS e documentação o nome completo oficial: **Gabriel Ulisses de Queiroz Barbosa**.
 - **Página Inicial (`index.html`)**:
+  * Atualizado o player principal da seção "Sobre o Meliponário" para reproduzir o vídeo institucional via Google Drive (`1N23fqdbP6k78MvyHdSY7pOfsANpvLoiZ`) dentro do contêiner `.video-wrapper` 100% responsivo.
   * Integrado o vídeo oficial com ID `1N23fqdbP6k78MvyHdSY7pOfsANpvLoiZ` ao mosaico da galeria inicial ao lado da tríade de fotos (`1E0nlV7fM9MUePhsFxHDAAmHen5FC_SHl`, `1qktFwlJ6QI9Ie_NM1zAEBONkYCsV8K-5` e `1yiDHefHAj8qD2J-YYasvVF4lkcPVywi4`).
-- **Engenharia de Responsividade Mobile (`style.css`)**:
-  * Implementada a regra fluida `aspect-ratio: 16 / 9` em `.video-wrapper` com limites de altura mínima e media queries adaptadas para dispositivos móveis (`max-width: 768px` e `max-width: 480px`), eliminando telas pretas e garantindo ajuste proporcional à resolução do navegador mobile.
+- **Engenharia de Responsividade Mobile Global (`style.css`)**:
+  * Implementada a regra fluida `aspect-ratio: 16 / 9` em `.video-wrapper` com limites de altura mínima e media queries adaptadas para celulares (`max-width: 768px` e `max-width: 480px`), além de `minmax(min(100%, 340px), 1fr)` em `.grid-2-col` e `.gallery-photo-grid`, garantindo que todos os 12 vídeos de `galeria.html`, 5 de `manufatura.html`, 2 de `historia.html` e os da página inicial se ajustem perfeitamente à resolução do navegador mobile do visitante sem telas pretas.
 
 ### 16/08/2026 - Módulo 11: Saneamento Visual Definitivo de Vídeos, Eliminação de Duplicidades e Padronização da Imagem Coringa
 - **Página Inicial (`index.html`) e JavaScript (`script.js`)**:
