@@ -754,11 +754,11 @@ function inicializarAudioEspecies() {
 }
 
 /**
- * 🖼️ 10. RESILIÊNCIA E FALLBACK AUTOMÁTICO DE IMAGENS E VÍDEOS (GOOGLE DRIVE & LOCAL)
+ * 10. RESILIÊNCIA E FALLBACK AUTOMÁTICO DE IMAGENS E VÍDEOS (GOOGLE DRIVE & LOCAL)
  */
 function inicializarResilienciaMidias() {
   const mapaMidiasDrive = {
-    "Fábio, irmão de Ulisses, o grande incetivador.jpg": "1ctt-bMcDcSqxJcyqtl_n6zNUsL8UKokg",
+    "Fábio, irmão de Ulisses, o grande incetivador.jpg": "1pBT0QtIE9gu33_4EJKw0Jf8pAfTkNaiQ",
     "citação de ulises.jpeg": "1KdBq-ACySp3ctLI2W64xiih-ny8tGuRX",
     "uruçu nordestina.jpg": "1aOlGfXfHfnyVLHJ-60RQpPvImpzk1aWx",
     "jataí.jpg": "1BHCTEiyAi05cRWSLnnUpyt4Xraeqz38E",

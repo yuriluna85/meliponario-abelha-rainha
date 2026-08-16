@@ -46,7 +46,7 @@ Meliponário Abelha Rainha/
   * Ajustada a grade de prévia da galeria inicial para 3 registros essenciais representativos do sítio com link direto para o acervo completo em `galeria.html`.
 - **Página Nossa História (`historia.html`)**:
   * `O Santuário das Abelhas Nativas`: Atualizado para `iframe` com ID `1X5n4clNCxGi0oDVr66qbdarkEmsWf6wh`.
-  * `O Começo em 2018 (Homenagem a Fábio Barbosa)`: Atualizada a imagem de Fábio para a CDN oficial com ID `1BHCTEiyAi05cRWSLnnUpyt4Xraeqz38E`.
+  * `O Começo em 2018 (Homenagem a Fábio Barbosa)`: Atualizada a imagem de Fábio para a CDN oficial com ID `1pBT0QtIE9gu33_4EJKw0Jf8pAfTkNaiQ`.
   * `Educação Socioambiental (Capacitação de Meliponicultores)`: Atualizado o vídeo para o `iframe` oficial com ID `1ctt-bMcDcSqxJcyqtl_n6zNUsL8UKokg`.
   * Cards de Navegação: Substituída a imagem do card de `Manufatura e Cutelaria` pela logo `LOGO.png`.
 - **Página Nossas Abelhas (`abelhas.html`)**:
@@ -83,29 +83,29 @@ Meliponário Abelha Rainha/
 - **Flexibilidade de Entradas**: Adicionados inputs configuráveis no GitHub Actions para definir o ID da pasta do Drive (`pasta_drive_id`, padrão `1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r`) e opção de forçar recriação de `galeria.json`.
 - **Refatoração com Argparse (`atualizar_galeria.py`)**: Script Python atualizado para processar parâmetros via linha de comando e variáveis de ambiente com suporte a UTF-8 puro.
 
-### 📅 16/08/2026 - Módulo 5: Arquitetura Multi-Páginas (MPA) e Integração do Acervo Multimídia
+### 16/08/2026 - Módulo 5: Arquitetura Multi-Páginas (MPA) e Integração do Acervo Multimídia
 - **Página Nossa História (`historia.html`)**: Narrativa biográfica completa de Gabriel Ulisses Barbosa, a homenagem pioneira a Fábio Barbosa (incentivador de 2018), as 2 primeiras caixas e a expansão para mais de 200 colônias, integrando os vídeos `info/O espaço.mp4` e `info/Curso de formação de novos criadores.mp4`.
 - **Página Nossas Abelhas (`abelhas.html`)**: Catálogo detalhado das espécies Uruçu Nordestina (*Melipona scutellaris*), Jataí (*Tetragonisca angustula*) e Mandaçaia (*Melipona quadrifasciata*), com os vídeos `info/uruçu na flor de melaleuca.mp4` e `info/Mandaçaia.mp4`.
-- **Página Manufatura & Cutelaria (`manufatura.html`)**: O ateliê ecológico de Luís Sérgio, transformando madeiras nobres de demolição (Cumaru, Pau-d'Arco, Pau-Rosa, Angelim) em caixas racionais térmicas e cercas do sítio, além de facas artesanais forjadas à mão (`info/Luis Sergio - facas artesanais.mp4`, `info/Luis Sergio - facas artesanais 02.mp4` e `info/Momento descontração - Removedor de casca de coco, criação de metalurgia de Luis Sergio.mp4`).
+- **Página Manufatura e Cutelaria (`manufatura.html`)**: A oficina de Luís Sérgio, transformando madeiras nobres de demolição (Cumaru, Pau-d'Arco, Pau-Rosa, Angelim) em caixas racionais térmicas e cercas do sítio, além de facas artesanais forjadas à mão (`info/Luis Sergio - facas artesanais.mp4`, `info/Luis Sergio - facas artesanais 02.mp4` e `info/Momento descontração - Removedor de casca de coco, criação de metalurgia de Luis Sergio.mp4`).
 - **Página Galeria Multimídia (`galeria.html`)**: Mural interativo completo com fotos em alta definição e players integrados para todos os vídeos da pasta `info/`.
 - **Navegação Global e SEO**: Atualizados `index.html`, `style.css` e `sitemap.xml` garantindo conformidade com WCAG 2.1 AAA.
 
-### 📅 15/08/2026 - Módulo 4: Cockpit de Encomendas no WhatsApp e Síntese de Voz Web Speech API
+### 15/08/2026 - Módulo 4: Cockpit de Encomendas no WhatsApp e Síntese de Voz Web Speech API
 - **Cockpit de Encomendas Sustentáveis**: Implementado seletor interativo de produtos artesanais (Méis puros de Uruçu/Jataí/Mandaçaia, Extrato de Própolis ASF, Caixas INPA e Visitas Ecológicas) com montagem e disparo automático de mensagem formatada para o WhatsApp de Gabriel Ulisses Barbosa (`71 99272-4330`).
 - **Leitor de Voz Nativo (Web Speech API)**: Integrados botões "Ouvir Espécie" nos cards da Uruçu, Mandaçaia e Jataí utilizando a API nativa do navegador para leitura em áudio pt-BR.
 - **Acessibilidade Universal**: Adicionados estilos responsivos e suporte completo ao modo de Alto Contraste AAA para o Cockpit de Encomendas.
 
-### 📅 15/08/2026 - Módulo 3: Mapa com Rotas Waze/Google Maps e Calendário de Floração Melífera
+### 15/08/2026 - Módulo 3: Mapa com Rotas Waze/Google Maps e Calendário de Floração Melífera
 - **Calendário Sazonal de Floração na Bahia**: Implementado o grid com as estações de pasto apícola em Petecaba (*Assa-peixe no Outono/Inverno*, *Aroeira-mansa na Primavera* e *Frutíferas Silvestres no Verão*).
 - **Rotas Diretas e Geolocalização**: Adicionados botões diretos para abertura de rotas no **Google Maps** e **Waze** na seção de localização.
 - **Camada Rica de Pontos no Leaflet.js**: Enriquecidos os popups com informações detalhadas e adicionado o marcador ecológico da *Trilha da Floração e Pasto Apícola*.
 
-### 📅 15/08/2026 - Módulo 2: Catálogo Sensorial de Espécies ASF e Guia do Meliponicultor Iniciante
+### 15/08/2026 - Módulo 2: Catálogo Sensorial de Espécies ASF e Guia do Meliponicultor Iniciante
 - **Catálogo Sensorial de Méis Artesanais**: Implementadas barras dinâmicas de perfil sensorial (Doçura, Acidez Floral, Fluidez e Compostos Bioativos) nos cards de cada espécie de abelha nativa sem ferrão (Uruçu Nordestina, Mandaçaia e Jataí).
 - **Guia do Meliponicultor Iniciante**: Criada a seção interativa no portal recomendando a espécie adequada para cada perfil de espaço físico (Varandas/Jardins Urbanos, Quintais Sombreados e Chácaras/Sítios).
 - **Estilização e Conformidade**: Adicionadas as classes `.sensorial-profile`, `.metric-bar`, `.metric-fill` e `.beginner-guide-grid` em `style.css` com total suporte a contraste acessível.
 
-### 📅 15/08/2026 - Módulo 1: Atmosfera Biophilia, Hero Bento de Impacto e Tokens de Preservação
+### 15/08/2026 - Módulo 1: Atmosfera Biophilia, Hero Bento de Impacto e Tokens de Preservação
 - **Hero Bento Grid de Impacto Ecológico**: Implantado o painel bento tátil no Hero (`.hero-bento-grid`) com 4 cartões de métricas ambientais (*100% Nativas*, *Mata Atlântica de Petecaba*, *+1.500 Flores/Plantas Visitadas* e *Caixas Modulares Racionais INPA*).
 - **Estética Biophilia e Efeitos Orgânicos**: Refinados os tokens de cores no `style.css` com bordas translúcidas de mel âmbar, sombras suaves e efeito de vidro orgânico (*Organic Glassmorphism*).
 - **Contadores Dinâmicos Suaves**: Integrada a rotina `inicializarHeroBento()` em `script.js` com `IntersectionObserver` e interpolação cúbica suave para contagem animada das métricas ecológicas ao entrar em tela.
