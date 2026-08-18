@@ -40,6 +40,14 @@ Meliponário Abelha Rainha/
 
 ## Log de Atualizações (Changelog)
 
+### 18/08/2026 - Módulo 13: Inclusão das Fotografias Históricas da Protetora e das Raízes Familiares (Fábio e Pai de Ulisses)
+- **Página Nossa História (`historia.html`)**:
+  * **Capítulo 1 (O Ponto de Partida e as Raízes Familiares)**: Integrada a fotografia histórica de **Fábio Barbosa ao lado do Pai de Gabriel Ulisses** (CDN Google Drive `1fmofDwcK-QnpnnsCPQ7sADiM5TbTFiDp` e fallback local `info/O artista e o Pai.jpg`) em conjunto com o retrato de Fábio Barbosa, valorizando a ancestralidade e o incentivo fraterno que deu origem ao meliponário.
+  * **Capítulo 2 (A Protetora e a Guarda do Santuário)**: Criado capítulo dedicado integrando a imagem da **Protetora** (CDN Google Drive `1FYpaeW98_w_27NmrTtrsIG9RbJlK1a8w` e fallback local `info/A Protetora.jpg`), destacando a bênção espiritual, a fé e o respeito sagrado pela preservação da vida e das abelhas nativas em Petecaba.
+  * **Harmonização de Capítulos**: Reestruturada a sequência de seções com alternância visual fluida (`section-alternate`), mantendo a integridade do design responsivo, alto contraste (WCAG 2.1 AAA) e descrições acessíveis para leitores de tela.
+- **Galeria Multimídia (`galeria.json`)**:
+  * Incluídas as duas novas fotografias sob a categoria "História e Preservação" com metadados estruturados.
+
 ### 16/08/2026 - Módulo 12: Responsividade Mobile Fluida de Vídeos, Inclusão de Vídeo Inicial e Padronização Nominal
 - **Padronização Nominal do Proprietário**:
   * Atualizado universalmente em todo o portal, metatags SEO, JavaScript, CSS e documentação o nome completo oficial: **Gabriel Ulisses de Queiroz Barbosa**.
