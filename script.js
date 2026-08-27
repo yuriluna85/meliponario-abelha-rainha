@@ -7,9 +7,9 @@
 const CONFIG_GALERIA = {
   // Origem das mídias da galeria:
   // - 'local': Lê os itens diretamente do HTML (convertendo links do Drive se fornecidos lá)
-  // - 'json': Lê a partir de um arquivo JSON local configurado
+  // - 'json': Lê a partir de um arquivo JSON local configurado (galeria.json)
   // - 'api': Lê a partir de uma API externa (como Web App do Google Apps Script)
-  origem: 'local', 
+  origem: 'json', 
   url: 'galeria.json' // Caminho do arquivo JSON ou URL da API
 };
 
@@ -266,9 +266,10 @@ function carregarGaleria() {
   }
 }
 
-function renderizarGaleriaDinamica(itens) {
+function renderizarGaleriaDinamica(data) {
   const galleryGrid = document.querySelector('.gallery-grid');
-  if (!galleryGrid || !Array.isArray(itens)) return;
+  const itens = Array.isArray(data) ? data : (data && Array.isArray(data.itens) ? data.itens : []);
+  if (!galleryGrid || !itens.length) return;
 
   // Limpa galeria padrão local
   galleryGrid.innerHTML = '';

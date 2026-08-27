@@ -10,7 +10,7 @@ import json
 import argparse
 import requests
 
-PASTA_PADRAO_INFO = "1wyh_XDZRirOJomxZG8ecJZj5Y1CNRx5r"
+PASTA_PADRAO_INFO = "13_gxXff5FsT2J2Dx0vzWUCNunA7WuPrV"
 
 def extrair_dados_pasta(folder_id: str) -> list:
     url = f"https://drive.google.com/drive/folders/{folder_id}"
