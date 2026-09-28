@@ -16,6 +16,7 @@ const CONFIG_GALERIA = {
 document.addEventListener('DOMContentLoaded', () => {
   inicializarMenuMobile();
   inicializarAcessibilidade();
+  inicializarBannerCookies();
   inicializarMapa();
   carregarGaleria(); // Inicializa e carrega a galeria de fotos/vídeos
   inicializarModalEspecies();
@@ -25,7 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * 📱 1. CONTROLE DO MENU MOBILE (HAMBÚRGUER)
+ * Banner de Consentimento de Cookies (LGPD/GDPR)
+ * Persistência da escolha do visitante via localStorage, sem envio a servidor próprio.
+ */
+function inicializarBannerCookies() {
+  const CHAVE_CONSENTIMENTO = 'cookieConsentMeliponario';
+  const banner = document.getElementById('cookie-consent-banner');
+  const btnAceitar = document.getElementById('btn-cookie-aceitar');
+
+  if (!banner) return;
+
+  if (localStorage.getItem(CHAVE_CONSENTIMENTO) !== 'true') {
+    banner.hidden = false;
+  }
+
+  if (btnAceitar) {
+    btnAceitar.addEventListener('click', () => {
+      localStorage.setItem(CHAVE_CONSENTIMENTO, 'true');
+      banner.hidden = true;
+    });
+  }
+}
+
+/**
+ * 1. CONTROLE DO MENU MOBILE (HAMBÚRGUER)
  */
 function inicializarMenuMobile() {
   const menuToggle = document.querySelector('.menu-toggle');
@@ -65,7 +89,7 @@ function inicializarMenuMobile() {
 }
 
 /**
- * 🔤 2. WIDGET E FLUXO DE ACESSIBILIDADE (A+/A- & Alto Contraste)
+ * 2. WIDGET E FLUXO DE ACESSIBILIDADE (A+/A- & Alto Contraste)
  */
 function inicializarAcessibilidade() {
   let fontScale = 100;
@@ -103,7 +127,7 @@ function inicializarAcessibilidade() {
 }
 
 /**
- * 🗺️ 3. INICIALIZAÇÃO DO MAPA INTERATIVO (LEAFLET.JS)
+ * 3. INICIALIZAÇÃO DO MAPA INTERATIVO (LEAFLET.JS)
  * Coordenadas: -12.677947, -38.448682
  */
 function inicializarMapa() {
@@ -133,7 +157,7 @@ function inicializarMapa() {
 
     // Ícone personalizado de Abelha/Mel para o Pin do Mapa
     const beeIcon = L.divIcon({
-      html: `<div style="background-color: #F2B705; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #261C14; box-shadow: 0 4px 8px rgba(0,0,0,0.3); font-size: 1.2rem; transform: translate(-8px, -8px);">🐝</div>`,
+      html: `<div style="background-color: #F2B705; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #261C14; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transform: translate(-8px, -8px);"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#261C14" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2 21 7v10l-9 5-9-5V7Z"/></svg></div>`,
       className: 'custom-map-icon',
       iconSize: [36, 36],
       iconAnchor: [18, 18]
@@ -182,7 +206,7 @@ function inicializarMapa() {
 }
 
 /**
- * 🔍 EXTRAÇÃO E CONVERSÃO DE LINKS DO GOOGLE DRIVE
+ * EXTRAÇÃO E CONVERSÃO DE LINKS DO GOOGLE DRIVE
  */
 function obterIdGoogleDrive(url) {
   if (!url) return null;
@@ -206,7 +230,7 @@ function formatarLinkGoogleDrive(url, tipo) {
 }
 
 /**
- * 📸 CARREGAMENTO, FILTRAGEM E CONVERSÃO DINÂMICA DA GALERIA
+ * CARREGAMENTO, FILTRAGEM E CONVERSÃO DINÂMICA DA GALERIA
  */
 function carregarGaleria() {
   const galleryGrid = document.querySelector('.gallery-grid');
@@ -276,10 +300,13 @@ function renderizarGaleriaDinamica(data) {
   const categorias = new Set();
 
   itens.forEach(item => {
-    const isVideo = item.tipo === 'video' || !!item.videoUrl;
-    const mediaUrl = isVideo ? (item.videoUrl || item.url) : item.url;
-    const capImgUrl = item.capaUrl || item.url;
-    
+    // Aceita os campos gerados pelo atualizar_galeria.py (url_imagem, url_video, id)
+    // e os nomes antigos (url, capaUrl, videoUrl).
+    const isVideo = item.tipo === 'video' || !!(item.videoUrl || item.url_video);
+    const mediaUrl = isVideo ? (item.videoUrl || item.url_video || item.url || item.url_drive) : (item.url || item.url_imagem);
+    const capImgUrl = item.capaUrl || item.url_imagem || item.url || (item.id ? `https://lh3.googleusercontent.com/d/${item.id}` : '');
+    if (!capImgUrl) return;
+
     // Define a categoria (subpasta do Drive, ex: "Fotos", "Vídeos", "Região da Petecaba")
     const categoria = item.categoria || (isVideo ? 'Vídeos' : 'Fotos');
     categorias.add(categoria);
@@ -566,7 +593,7 @@ function inicializarGaleriaLightbox() {
 // O formulário de contato anterior foi removido para focar no atendimento centralizado via WhatsApp.
 
 /**
- * 🐝 6. MODAL INTERATIVO DE DETALHES DAS ESPÉCIES DE ABELHAS (ASF)
+ * 6. MODAL INTERATIVO DE DETALHES DAS ESPÉCIES DE ABELHAS (ASF)
  */
 function inicializarModalEspecies() {
   const triggers = document.querySelectorAll('.species-trigger');
@@ -634,19 +661,19 @@ function inicializarModalEspecies() {
           
           <div class="species-specs-grid">
             <div class="spec-item">
-              <span class="spec-label">📍 Bioma Principal</span>
+              <span class="spec-label">Bioma Principal</span>
               <span class="spec-val">${dados.bioma}</span>
             </div>
             <div class="spec-item">
-              <span class="spec-label">🐝 Comportamento</span>
+              <span class="spec-label">Comportamento</span>
               <span class="spec-val">${dados.comportamento}</span>
             </div>
             <div class="spec-item">
-              <span class="spec-label">🍯 Tipo de Mel</span>
+              <span class="spec-label">Tipo de Mel</span>
               <span class="spec-val">${dados.mel}</span>
             </div>
             <div class="spec-item">
-              <span class="spec-label">📈 Produtividade</span>
+              <span class="spec-label">Produtividade</span>
               <span class="spec-val">${dados.produtividade}</span>
             </div>
           </div>
@@ -706,7 +733,7 @@ function inicializarModalEspecies() {
 }
 
 /**
- * 🔊 7. LEITOR DE VOZ NATIVO PARA ESPÉCIES (WEB SPEECH API)
+ * 7. LEITOR DE VOZ NATIVO PARA ESPÉCIES (WEB SPEECH API)
  */
 function inicializarAudioEspecies() {
   const botoesAudio = document.querySelectorAll('.btn-audio-species');
@@ -790,7 +817,7 @@ function inicializarResilienciaMidias() {
 }
 
 /**
- * 🛡️ 11. PROTEÇÃO DE IMAGENS E VÍDEOS CONTRA DOWNLOAD DIRETO
+ * 11. PROTEÇÃO DE IMAGENS E VÍDEOS CONTRA DOWNLOAD DIRETO
  */
 function inicializarProtecaoMidias() {
   document.addEventListener('contextmenu', (e) => {

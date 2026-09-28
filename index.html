@@ -15,16 +15,20 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Meliponário Abelha Rainha | Preservação e Mel em Candeias, BA">
   <meta property="og:description" content="Produção artesanal de mel e conservação ambiental de espécies nativas de abelhas sem ferrão no Recôncavo Baiano.">
-  <meta property="og:image" content="WhatsApp%20Image%202026-07-12%20at%2015.53.49.jpeg">
-  
+  <meta property="og:image" content="https://lh3.googleusercontent.com/d/1aOlGfXfHfnyVLHJ-60RQpPvImpzk1aWx">
+  <meta property="og:url" content="https://meliponario-abelha-rainha.com.br/">
+  <meta property="og:locale" content="pt_BR">
+
   <!-- Leaflet Map CSS (HTTPS) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  
+
   <!-- Estilos Personalizados -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Ícone Favicon (Placeholder SVG) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐝</text></svg>">
+
+  <!-- Favicon Institucional Meliponário Abelha Rainha -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 </head>
 <body>
 
@@ -493,21 +497,35 @@
             
             <ul class="location-details">
               <li>
-                <div class="location-icon-wrapper">📍</div>
+                <div class="location-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s-7-6.13-7-11a7 7 0 0 1 14 0c0 4.87-7 11-7 11Z"/>
+                    <circle cx="12" cy="10" r="2.5"/>
+                  </svg>
+                </div>
                 <div>
                   <strong>Endereço de Referência</strong>
                   <p>Região de Petecaba, Próximo a Candeias, Bahia, CEP 43800-000</p>
                 </div>
               </li>
               <li>
-                <div class="location-icon-wrapper">🌐</div>
+                <div class="location-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9Z"/>
+                  </svg>
+                </div>
                 <div>
                   <strong>Coordenadas Geográficas</strong>
                   <p>Latitude: -12.677947<br>Longitude: -38.448682</p>
                 </div>
               </li>
               <li>
-                <div class="location-icon-wrapper">🌿</div>
+                <div class="location-icon-wrapper" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M2 12h20M12 2c5 5 5 15 0 20M12 2c-5 5-5 15 0 20"/>
+                  </svg>
+                </div>
                 <div>
                   <strong>Bioma Predominante</strong>
                   <p>Zona de transição e fragmentos de Mata Atlântica com flora melífera variada.</p>
@@ -554,30 +572,38 @@
               Iniciar Conversa Direta
             </a>
           </div>
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px; vertical-align: middle;">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.573 1.453 5.361 1.454 5.378 0 9.754-4.373 9.757-9.754.002-2.607-1.012-5.059-2.859-6.908C17.06 2.1 14.604.992 12.002.992c-5.385 0-9.761 4.372-9.765 9.752-.001 1.905.5 3.755 1.455 5.368l-.953 3.486 3.568-.936zm10.743-7.07c-.29-.145-1.716-.848-1.982-.944-.266-.096-.46-.145-.652.145-.19.29-.74.944-.906 1.135-.167.19-.333.214-.623.069-.29-.145-1.224-.451-2.332-1.441-.862-.77-1.444-1.72-1.614-2.01-.17-.29-.018-.447.127-.592.13-.13.29-.338.435-.508.145-.17.193-.29.29-.483.097-.19.047-.36-.023-.506-.07-.145-.652-1.57-.894-2.15-.236-.57-.475-.49-.652-.499-.169-.008-.363-.01-.557-.01-.19 0-.502.072-.765.352-.263.28-1.006.985-1.006 2.402 0 1.417 1.031 2.784 1.176 2.977.145.19 2.029 3.1 4.916 4.35.687.297 1.222.474 1.64.607.69.22 1.319.19 1.815.116.552-.083 1.716-.7 1.958-1.378.243-.677.243-1.258.17-1.378-.072-.12-.266-.19-.556-.336z"/>
-              </svg>
-              Iniciar Conversa Direta
-            </a>
-          </div>
 
           <div class="whatsapp-contact-details">
             <div class="contact-detail-item">
-              <span class="detail-icon" aria-hidden="true">⏰</span>
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 7v5l3.5 2"/>
+                </svg>
+              </span>
               <div class="detail-text">
                 <strong>Horário de Atendimento</strong>
                 <p>Segunda a Sexta: 08:00 às 17:00</p>
               </div>
             </div>
             <div class="contact-detail-item">
-              <span class="detail-icon" aria-hidden="true">📍</span>
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21s-7-6.13-7-11a7 7 0 0 1 14 0c0 4.87-7 11-7 11Z"/>
+                  <circle cx="12" cy="10" r="2.5"/>
+                </svg>
+              </span>
               <div class="detail-text">
                 <strong>Localização Física</strong>
                 <p>Mata Atlântica de Petecaba, Candeias - Bahia</p>
               </div>
             </div>
             <div class="contact-detail-item">
-              <span class="detail-icon" aria-hidden="true">🐝</span>
+              <span class="detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+                  <path d="M12 2 21 7v10l-9 5-9-5V7Z"/>
+                </svg>
+              </span>
               <div class="detail-text">
                 <strong>Meliponicultura Responsável</strong>
                 <p>Preservação ambiental e produção artesanal</p>
@@ -615,6 +641,13 @@
         <div class="footer-col">
           <h4>Sustentabilidade</h4>
           <p>Projeto de fomento e conservação da biodiversidade de meliponíneos da Mata Atlântica de Candeias/Bahia.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="privacidade.html">Política de Privacidade</a></li>
+            <li><a href="termos.html">Termos de Uso</a></li>
+          </ul>
         </div>
       </div>
       
@@ -679,6 +712,16 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   
   <!-- Comportamentos JavaScript -->
+  <!-- BANNER DE CONSENTIMENTO DE COOKIES (LGPD/GDPR) -->
+  <div id="cookie-consent-banner" class="cookie-consent-banner" role="region" aria-label="Aviso de cookies" hidden>
+    <p class="cookie-consent-text">
+      Este site usa apenas armazenamento local do navegador para lembrar suas preferências de acessibilidade e incorpora conteúdo de terceiros (Google Drive e mapa OpenStreetMap). Não usamos rastreamento nem publicidade personalizada. Saiba mais na <a href="privacidade.html">Política de Privacidade</a>.
+    </p>
+    <div class="cookie-consent-actions">
+      <button id="btn-cookie-aceitar" class="cookie-consent-btn cookie-consent-btn-accept" type="button">Entendi</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

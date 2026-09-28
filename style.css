@@ -146,6 +146,84 @@ body.high-contrast strong {
   text-shadow: none !important;
 }
 
+/* ==========================================================================
+   BANNER DE CONSENTIMENTO DE COOKIES (LGPD / GDPR)
+   ========================================================================== */
+
+.cookie-consent-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  padding: 18px 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-body);
+}
+
+.cookie-consent-banner[hidden] {
+  display: none;
+}
+
+.cookie-consent-text {
+  flex: 1 1 480px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cookie-consent-text a {
+  color: var(--primary-color);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cookie-consent-btn {
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-weight: 700;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.cookie-consent-btn-accept {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.cookie-consent-btn-accept:hover,
+.cookie-consent-btn-accept:focus {
+  background-color: var(--primary-hover);
+  outline: 2px solid var(--text-light);
+}
+
+@media (max-width: 640px) {
+  .cookie-consent-banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .cookie-consent-actions {
+    justify-content: center;
+  }
+}
+
 body.high-contrast a {
   color: #FFFF00 !important;
   text-decoration: underline !important;
@@ -1394,9 +1472,10 @@ footer {
   font-size: 0.95rem;
 }
 
-.footer-grid {
+.footer-grid,
+.footer-content {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 48px;
   margin-bottom: 40px;
 }
@@ -1680,7 +1759,8 @@ body.high-contrast .whatsapp-float {
     height: 70vh;
   }
   
-  .footer-grid {
+  .footer-grid,
+  .footer-content {
     grid-template-columns: 1fr;
     gap: 32px;
   }
