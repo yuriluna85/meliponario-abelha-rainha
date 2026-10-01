@@ -290,6 +290,15 @@ function carregarGaleria() {
   }
 }
 
+// Devolve o título só quando ele foi escrito por alguém; nomes de arquivo (IMG_..., .jpg, .mp4) viram texto vazio
+function tituloExibivel(titulo) {
+  const texto = String(titulo || '').trim();
+  if (!texto) return '';
+  const pareceArquivo = /\.(jpe?g|png|gif|webp|heic|heif|bmp|tiff?|mp4|mov|avi|mkv|webm|3gp)$/i.test(texto)
+    || /^(img|vid|dsc|pxl|mvimg|whatsapp)[\s_-]/i.test(texto);
+  return pareceArquivo ? '' : texto;
+}
+
 function renderizarGaleriaDinamica(data) {
   const galleryGrid = document.querySelector('.gallery-grid');
   const itens = Array.isArray(data) ? data : (data && Array.isArray(data.itens) ? data.itens : []);
@@ -315,18 +324,23 @@ function renderizarGaleriaDinamica(data) {
     const finalImgUrl = formatarLinkGoogleDrive(capImgUrl, 'imagem');
     const finalVideoUrl = isVideo ? formatarLinkGoogleDrive(mediaUrl, 'video') : null;
 
+    // O atualizar_galeria.py grava o nome do arquivo como título (ex.: IMG_20260712_082136.312.jpg).
+    // Nome de arquivo não é legenda: só títulos escritos de verdade aparecem no card e no lightbox.
+    const titulo = tituloExibivel(item.titulo);
+    const textoAlternativo = item.alt || titulo || `${isVideo ? 'Vídeo' : 'Foto'} do Meliponário Abelha Rainha, categoria ${categoria}`;
+
     const galleryItem = document.createElement('div');
     galleryItem.className = isVideo ? 'gallery-item gallery-item-video' : 'gallery-item';
     galleryItem.setAttribute('role', 'button');
     galleryItem.setAttribute('tabindex', '0');
     galleryItem.setAttribute('data-categoria', categoria);
-    galleryItem.setAttribute('aria-label', `Visualizar ${isVideo ? 'Vídeo' : 'Imagem'} - ${item.titulo || ''}`);
-    
+    galleryItem.setAttribute('aria-label', `Visualizar ${isVideo ? 'vídeo' : 'imagem'}: ${textoAlternativo}`);
+
     if (isVideo && finalVideoUrl) {
       galleryItem.setAttribute('data-video', finalVideoUrl);
     }
 
-    let innerHTML = `<img src="${finalImgUrl}" alt="${item.alt || item.titulo || ''}">`;
+    let innerHTML = `<img src="${finalImgUrl}" alt="${textoAlternativo}">`;
 
     if (isVideo) {
       innerHTML += `
@@ -339,10 +353,11 @@ function renderizarGaleriaDinamica(data) {
     }
 
     // Exibe overlay com textos apenas se houver título ou descrição válidos
-    if (item.titulo || item.descricao) {
+    // Decisão de Yuri (01/10/2026): nenhum título aparece no card nem no lightbox, nem os escritos à mão.
+    // O título válido continua servindo de texto alternativo para leitores de tela.
+    if (item.descricao) {
       innerHTML += `
         <div class="gallery-overlay">
-          ${item.titulo ? `<h3 class="gallery-title">${item.titulo}</h3>` : ''}
           ${item.descricao ? `<p class="gallery-desc">${item.descricao}</p>` : ''}
         </div>
       `;

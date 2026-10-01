@@ -61,6 +61,12 @@ O documento de referência arquitetural (`_System_Designs/SYSTEM_DESIGN_MELIPONA
 
 ## Changelog
 
+### 01/10/2026
+- Galeria: os cards de fotos e vídeos deixaram de exibir o nome do arquivo como legenda (ex.: `IMG_20260712_082136.312.jpg`). O `atualizar_galeria.py` grava o nome do arquivo no campo `titulo` do `galeria.json`; a nova função `tituloExibivel()` do `script.js` ignora títulos que terminam em extensão de mídia ou começam com prefixos de câmera (IMG, VID, DSC, PXL, MVIMG, WhatsApp). Títulos escritos à mão continuam aparecendo.
+- O texto alternativo e o rótulo para leitores de tela passaram a usar uma descrição neutra ("Foto do Meliponário Abelha Rainha, categoria ...") em vez do nome do arquivo. A legenda do lightbox mostra a categoria quando não há título.
+- O `galeria.json` não foi alterado, porque é regenerado pelo `atualizar_galeria.py`.
+- Ajuste no mesmo dia, a pedido: nenhum título aparece mais nos cards nem no lightbox, inclusive os escritos à mão (caso de "Vídeo de Yuri Luna" e "Uruçu Nordestina (ASF)"). O lightbox mostra só a categoria. Títulos válidos continuam como texto alternativo para leitores de tela. Descrições (`descricao`), se forem preenchidas, ainda aparecem no card.
+
 ### 27/09/2026
 - Corrigido HTML quebrado e duplicado no card de contato do WhatsApp em `index.html` (botão "Iniciar Conversa Direta" aparecia duas vezes, a segunda sem tag de abertura).
 - Corrigido `og:image` de `index.html` e `galeria.html`, que apontava para um arquivo inexistente; substituído por uma imagem real já hospedada no Google Drive.
